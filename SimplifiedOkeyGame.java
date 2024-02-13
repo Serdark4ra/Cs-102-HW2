@@ -59,8 +59,23 @@ public class SimplifiedOkeyGame {
      * (this simulates picking up the tile discarded by the previous player)
      * it should return the toString method of the tile so that we can print what we picked
      */
-    public String getLastDiscardedTile() {
-        return null;
+    // Oğuzhan Demir
+    public String getLastDiscardedTile() 
+    {
+        // Firstly check discarded tile
+        if (lastDiscardedTile != null) {
+            players[currentPlayerIndex].addTile(lastDiscardedTile);
+            // Give the discarded tile to the current player
+            String discardedTileString = lastDiscardedTile.toString();
+            lastDiscardedTile = null; 
+            // Reset lastDiscardedTile since it has been picked up to 
+                
+            return discardedTileString;
+        } else {
+            System.out.println("No tile has been discarded yet.");
+            return null;
+            // tile has not been discarded, this method gives an error
+        }
     }
 
     /*
@@ -69,14 +84,37 @@ public class SimplifiedOkeyGame {
      * and it will be given to the current player
      * returns the toString method of the tile so that we can print what we picked
      */
-    public String getTopTile() {
-        return null;
+    // Oğuzhan Demir
+    public String getTopTile() 
+    {
+         // Check if there are still tiles in the stack
+        if (tileCount > 0) {
+            Tile topTile = tiles[--tileCount];
+             // Get the top tile
+            players[currentPlayerIndex].addTile(topTile);
+             // Give the tile to the current player
+            return topTile.toString();
+        } else {
+            System.out.println("No more tiles in the stack.");
+            return null;
+            // If the tile is exhausted it gives a warning.
+        }
+        
     }
 
     /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
+    // Oğuzhan Demir
     public void shuffleTiles() {
+        for (int i = 0; i < tiles.length - 1; i++) 
+        {
+            int randomIndex = (int) (Math.random() * (i + 1));
+            // Swap elements of tiles
+            Tile temporaryTile = tiles[i];
+            tiles[i] = tiles[randomIndex];
+            tiles[randomIndex] = temporaryTile;
+        }
 
     }
 
