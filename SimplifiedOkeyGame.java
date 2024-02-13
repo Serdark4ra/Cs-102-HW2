@@ -31,8 +31,27 @@ public class SimplifiedOkeyGame {
      * player at index 0 gets 15 tiles and starts first
      * other players get 14 tiles, this method assumes the tiles are already shuffled
      */
+    //Serdar Kara
     public void distributeTilesToPlayers() {
-
+        for (int i = 0; i < 15; i++) {
+            players[0].playerTiles[i] = tiles[i];
+        }
+        for (int i = 15; i < 29; i++) {
+            players[1].playerTiles[i- 15] = tiles[i];
+        }
+        for (int i = 29; i < 43; i++) {
+            players[2].playerTiles[i - 29] = tiles[i];
+        }
+        for (int i = 43; i < 57; i++) {
+            players[3].playerTiles[i - 43] = tiles[i];
+        }
+        for (int i = 0; i < players.length; i++) {
+            if(i == 0){
+                players[i].numberOfTiles = 15;
+            }else{
+                players[i].numberOfTiles = 14;
+            }
+        }
     }
 
     /*
@@ -110,7 +129,11 @@ public class SimplifiedOkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-
+        lastDiscardedTile = players[currentPlayerIndex].playerTiles[tileIndex];
+        for (int i = tileIndex; i < players[currentPlayerIndex].numberOfTiles; i++) {
+            players[currentPlayerIndex].playerTiles[i] = players[currentPlayerIndex].playerTiles[i + 1];
+        }
+        players[currentPlayerIndex].playerTiles[players[currentPlayerIndex].numberOfTiles] = null;
     }
 
     public void displayDiscardInformation() {
