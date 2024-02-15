@@ -1,9 +1,10 @@
 public class Tile {
     
-    int value;
+    //attributes
+    private int value;
 
     /*
-     * creates altan tile using the given value. False jokers are not included in this game.
+     * creates tile using the given value. False jokers are not included in this game.
      */
     public Tile(int value) {
         this.value = value;
@@ -13,11 +14,14 @@ public class Tile {
      * TODO: should check if the given tile t and this tile have the same value 
      * return true if they are matching, false otherwise
      */
-    //Serdar Kara
+    //Serdar Kara - Altan
     public boolean matchingTiles(Tile t) {
-        if (t.value == this.value) {
+        
+        if (t.getValue() == this.getValue()) 
+        {
             return true;
         }
+
         return false;
     }
 
@@ -29,9 +33,12 @@ public class Tile {
      */
     //Serdar Kara
     public int compareTo(Tile t) {
-        if (t.value < this.value) {
+        if (t.value < this.getValue()) 
+        {
             return 1;
-        }else if (t.value == this.value) {
+        }
+        else if (t.value == this.getValue()) 
+        {
             return 0;
         }
         return -1;
@@ -43,20 +50,22 @@ public class Tile {
      * should return true if the absoulute value of the difference is 1 (they can form a chain)
      * otherwise, it should return false (they cannot form a chain)
      */
-    //Serdar Kara
+    //Serdar Kara - Altan
     public boolean canFormChainWith(Tile t) {
-        if (Math.abs(t.value - this.value) == 1) {
+        
+        if (Math.abs(t.getValue() - this.getValue()) == 1) 
+        {
             return true;
         }
         return false;
     }
 
     public String toString() {
-        return "" + value;
+        return "" + this.getValue();
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
 }
