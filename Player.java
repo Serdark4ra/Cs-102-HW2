@@ -30,6 +30,20 @@ public class Player {
     //YBB
     public int findLongestChain() {
         int longestChain = 0;
+        int longChain = 1;
+        boolean isChain = false;
+
+        for (int index = 0; index < playerTiles.length - 1; index++) {
+            if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
+                longChain ++;
+            }
+            else {
+                if (longChain > longestChain){
+                    longestChain = longChain;                    
+                }
+                longChain = 1;
+            }
+        }
 
         return longestChain;
     }
