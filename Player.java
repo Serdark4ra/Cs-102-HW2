@@ -10,7 +10,7 @@ public class Player {
     }
 
     /*
-     * TODO: checks this player's hand to determine if this player is winning Yusuf Deneme Commit
+     * TODO: checks this player's hand to determine if this player is winning Yusuf Deneme Commit 2
      * the player with a complete chain of 14 consecutive numbers wins the game
      * note that the player whose turn is now draws one extra tile to have 15 tiles in hand,
      * and the extra tile does not disturb the longest chain and therefore the winning condition
