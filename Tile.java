@@ -3,7 +3,7 @@ public class Tile {
     int value;
 
     /*
-     * creates a tile using the given value. False jokers are not included in this game.
+     * creates altan tile using the given value. False jokers are not included in this game.
      */
     public Tile(int value) {
         this.value = value;
