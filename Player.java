@@ -26,6 +26,8 @@ public class Player {
      * of consecutive numbers, used for checking the winning condition
      * and also for determining the winner if tile stack has no tiles
      */
+
+    //YBB
     public int findLongestChain() {
         int longestChain = 0;
 
@@ -33,19 +35,36 @@ public class Player {
     }
 
     /*
-     * TODO: removes and returns the tile in given index position
+     * removes and returns the tile in given index position
      */
+
+    //YBB
     public Tile getAndRemoveTile(int index) {
-        return null;
+        Tile targetTile = playerTiles[index];
+
+        for ( int i = index; i < playerTiles.length; i++){ //shifting all the tiles to the left by one
+            playerTiles[index] = playerTiles [index + 1];
+        }
+
+        return targetTile; // return desired tile
     }
 
     /*
-     * TODO: adds the given tile to this player's hand keeping the ascending order
+     * adds the given tile to this player's hand keeping the ascending order
      * this requires you to loop over the existing tiles to find the correct position,
      * then shift the remaining tiles to the right by one
      */
-    public void addTile(Tile t) {
 
+    //YBB
+    public void addTile(Tile t) {
+        for (int i = 0; i < playerTiles.length; i++) {
+            if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
+                for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right
+                    playerTiles[j+1] = playerTiles[j];
+                }
+                playerTiles[i] = t; 
+            }
+        }
     }
 
     /*
