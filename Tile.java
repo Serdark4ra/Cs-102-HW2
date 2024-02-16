@@ -14,7 +14,6 @@ public class Tile {
      * TODO: should check if the given tile t and this tile have the same value 
      * return true if they are matching, false otherwise
      */
-    //Serdar Kara - Altan
     public boolean matchingTiles(Tile t) {
         
         if (t.getValue() == this.getValue()) 
@@ -31,7 +30,6 @@ public class Tile {
      * return 0 if they have the same value
      * return -1 if the given tile has higher value
      */
-    //Serdar Kara
     public int compareTo(Tile t) {
         if (t.value < this.getValue()) 
         {
@@ -50,7 +48,6 @@ public class Tile {
      * should return true if the absoulute value of the difference is 1 (they can form a chain)
      * otherwise, it should return false (they cannot form a chain)
      */
-    //Serdar Kara - Altan
     public boolean canFormChainWith(Tile t) {
         
         if (Math.abs(t.getValue() - this.getValue()) == 1) 
