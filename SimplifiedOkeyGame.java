@@ -144,8 +144,8 @@ public class SimplifiedOkeyGame {
     /* TODO: finds the player who has the highest number for the longest chain
      * if multiple players have the same length may return multiple players
      */
-    // Altan
-    public Player[] getPlayerWithHighestLongestChain() {
+    // Altan - Need to be checked
+    public ArrayList<Player> getPlayerWithHighestLongestChain() {
         
         ArrayList<Player> winners = new ArrayList<Player>();
         int longestChain = players[0].findLongestChain();
@@ -159,11 +159,13 @@ public class SimplifiedOkeyGame {
                 winners.clear();
                 winners.add(p);
             }
-            else if (p.findLongestChain() > longestChain)
+            else if (p.findLongestChain() == longestChain)
             {
-                 
+                winners.add(p);  
             }
         }
+
+        return winners;
     }
     
     /*
