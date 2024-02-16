@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Random;
-
 public class SimplifiedOkeyGame {
 
     Player[] players;
@@ -144,6 +143,38 @@ public class SimplifiedOkeyGame {
     /* TODO: finds the player who has the highest number for the longest chain
      * if multiple players have the same length may return multiple players
      */
+
+    //Serdar Kara
+    public Player[] getPlayerWithHighestLongestChain() {
+        Player[] winners;
+        int winnersLength = 0;
+
+        ArrayList<Player> winnerList = new ArrayList<>();
+        int longestChain = 0;
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].findLongestChain() > longestChain) {
+                winnersLength = 0;
+                winnerList.clear();
+                winnerList.add(players[i]);
+                winnersLength++;
+                longestChain = players[i].findLongestChain();
+            }else if (players[i].findLongestChain() > longestChain) {
+                winnerList.add(players[i]);
+                winnersLength++;
+            }
+        }
+        winners = new Player[winnersLength];
+        for (int i = 0; i < winnersLength; i++) {
+            winners[i] = winnerList.get(i);
+        }
+
+        return winners;
+        
+    }
+
+    /*
+    
+    <<<<<<< tile_için_branch
     // Altan - Need to be checked
     public ArrayList<Player> getPlayerWithHighestLongestChain() {
         
@@ -164,10 +195,10 @@ public class SimplifiedOkeyGame {
                 winners.add(p);  
             }
         }
-
-        return winners;
-    }
     
+    */
+  
+  
     /*
      * checks if there are more tiles on the stack to continue the game
      */

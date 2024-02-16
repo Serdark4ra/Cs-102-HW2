@@ -92,6 +92,14 @@ public class ApplicationMain {
                         // TODO: the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
+                        // Serdar Kara
+                        Player[] winners = game.getPlayerWithHighestLongestChain();
+                        System.out.print("Winners are : ");
+                        for (int i = 0; i < winners.length; i++) {
+                            System.out.print(winners[i].getName() + " ");
+                        }
+
+
                     }
                 }
             }
@@ -120,6 +128,12 @@ public class ApplicationMain {
                         // TODO: the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
+                        // Serdar Kara
+                        Player[] winners = game.getPlayerWithHighestLongestChain();
+                        System.out.print("Winners are : ");
+                        for (int i = 0; i < winners.length; i++) {
+                            System.out.print(winners[i].getName() + " ");
+                        }
                     }
                 }
             }
