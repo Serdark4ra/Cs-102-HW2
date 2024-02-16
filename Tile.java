@@ -1,6 +1,7 @@
 public class Tile {
-    
+
     //attributes
+
     private int value;
 
     /*
