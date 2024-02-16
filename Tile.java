@@ -57,6 +57,11 @@ public class Tile {
         return false;
     }
 
+    public void setValue(int i)
+    {
+        this.value = i;
+    }
+
     public String toString() {
         return "" + this.getValue();
     }
