@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SimplifiedOkeyGame {
+
+    Random rnd = new Random();
 
     Player[] players;
     Tile[] tiles;
@@ -104,28 +107,46 @@ public class SimplifiedOkeyGame {
         
     }
 
-    /*
-     * TODO: should randomly shuffle the tiles array before game starts
-     */
-    // Oğuzhan Demir
     public void shuffleTiles() {
-        for (int i = 0; i < tiles.length - 1; i++) 
+        
+        for (int i = 0; i < 100; i++)
+        { 
+            int r1 = rnd.nextInt(tiles.length);
+            int r2 = rnd.nextInt(tiles.length);
+            int t = tiles[r1].getValue();
+
+            tiles[r1].setValue(tiles[r2].getValue());
+            tiles[r2].setValue(t);
+        }
+     
+        /* for (int i = 0; i < tiles.length - 1; i++) 
         {
             int randomIndex = (int) (Math.random() * (i + 1));
             // Swap elements of tiles
             Tile temporaryTile = tiles[i];
             tiles[i] = tiles[randomIndex];
             tiles[randomIndex] = temporaryTile;
-        }
+        } */
 
     }
 
-    /*
-     * TODO: check if game still continues, should return true if current player
-     * finished the game. use checkWinning method of the player class to determine
+    /**
+     * checks if the game is finished or not
+     * @return the 
      */
     public boolean didGameFinish() {
-        return false;
+        
+        boolean isFinish = false;
+        
+        for (Player p : players)
+        {
+            if (p.checkWinning())
+            {
+                isFinish = true;
+            }
+        }
+
+        return isFinish;
     }
 
     /* TODO: finds the player who has the highest number for the longest chain
@@ -133,30 +154,37 @@ public class SimplifiedOkeyGame {
      */
     //Serdar Kara
     public Player[] getPlayerWithHighestLongestChain() {
+        
         Player[] winners;
         int winnersLength = 0;
-
         ArrayList<Player> winnerList = new ArrayList<>();
         int longestChain = 0;
+        
         for (int i = 0; i < players.length; i++) {
-            if (players[i].findLongestChain() > longestChain) {
+            
+            if (players[i].findLongestChain() > longestChain) 
+            {
                 winnersLength = 0;
                 winnerList.clear();
                 winnerList.add(players[i]);
                 winnersLength++;
                 longestChain = players[i].findLongestChain();
-            }else if (players[i].findLongestChain() > longestChain) {
+            }
+            else if (players[i].findLongestChain() > longestChain) 
+            {
                 winnerList.add(players[i]);
                 winnersLength++;
             }
         }
+        
         winners = new Player[winnersLength];
-        for (int i = 0; i < winnersLength; i++) {
+        
+        for (int i = 0; i < winnersLength; i++) 
+        {
             winners[i] = winnerList.get(i);
         }
 
-        return winners;
-        
+        return winners;    
     }
     
     /*
@@ -221,7 +249,9 @@ public class SimplifiedOkeyGame {
     }
 
     public void setPlayerName(int index, String name) {
-        if(index >= 0 && index <= 3) {
+        
+        if(index >= 0 && index <= 3) 
+        {
             players[index] = new Player(name);
         }
     }
