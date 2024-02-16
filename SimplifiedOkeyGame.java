@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class SimplifiedOkeyGame {
 
     Player[] players;
     Tile[] tiles;
     int tileCount;
 
+    Random rnd = new Random();    
     Tile lastDiscardedTile;
-
     int currentPlayerIndex = 0;
 
     public SimplifiedOkeyGame() {
@@ -59,7 +62,7 @@ public class SimplifiedOkeyGame {
      * (this simulates picking up the tile discarded by the previous player)
      * it should return the toString method of the tile so that we can print what we picked
      */
-    // Oğuzhan Demir
+    // Oğuzhan Demir 
     public String getLastDiscardedTile() 
     {
         // Firstly check discarded tile
@@ -105,16 +108,27 @@ public class SimplifiedOkeyGame {
     /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
-    // Oğuzhan Demir
+    // Oğuzhan Demir - Altan Altay
     public void shuffleTiles() {
-        for (int i = 0; i < tiles.length - 1; i++) 
-        {
-            int randomIndex = (int) (Math.random() * (i + 1));
+        for (int i = 0; i < tiles.length; i++) 
+        {       
+            int r1 = rnd.nextInt(tiles.length);
+            int r2 = rnd.nextInt(r1);
+            Tile t = new Tile(tiles[r1].getValue());
+            tiles[r1] = tiles[r2];   
+            tiles[r2] = t;           
+        }
+
+        /*
+        for (int i = 0; i < tiles.length; i++) 
+        {       
+            int randomIndex = rnd.nextInt(tiles.length);
             // Swap elements of tiles
             Tile temporaryTile = tiles[i];
             tiles[i] = tiles[randomIndex];
             tiles[randomIndex] = temporaryTile;
         }
+         */
 
     }
 
@@ -123,16 +137,33 @@ public class SimplifiedOkeyGame {
      * finished the game. use checkWinning method of the player class to determine
      */
     public boolean didGameFinish() {
-        return false;
+        return true;
+        //burada current oyuncuyu nasıl bulacak? 15 taşı olana mı bakacak?
     }
 
     /* TODO: finds the player who has the highest number for the longest chain
      * if multiple players have the same length may return multiple players
      */
+    // Altan
     public Player[] getPlayerWithHighestLongestChain() {
-        Player[] winners = new Player[1];
+        
+        ArrayList<Player> winners = new ArrayList<Player>();
+        int longestChain = players[0].findLongestChain();
+        winners.add(players[0]);
 
-        return winners;
+        for (Player p : players)
+        {
+            if (p.findLongestChain() > longestChain)
+            {
+                longestChain = p.findLongestChain();
+                winners.clear();
+                winners.add(p);
+            }
+            else if (p.findLongestChain() > longestChain)
+            {
+                 
+            }
+        }
     }
     
     /*
