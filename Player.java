@@ -104,6 +104,7 @@ public class Player {
                 }
                 playerTiles[i] = t; 
             }
+            
         }*/
 
         boolean isPlaceFound = false;
