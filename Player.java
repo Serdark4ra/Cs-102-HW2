@@ -154,6 +154,26 @@ public class Player {
         System.out.println();
     }
 
+    /**
+     * This method separates the chains that user have as seperated Tile arrays.
+     * @return
+     */
+    public Tile[][] seperateChains() {
+        Tile[][] chains = new Tile[15][15];
+        int j = 0;
+
+        //Not done..
+        for ( int i = 0; i < this.numberOfTiles; i++ )
+        {
+            chains[j][0] = this.playerTiles[i];
+            while ( this.playerTiles[i].canFormChainWith(this.playerTiles[i + 1]) )
+            {
+
+            }
+        }
+        return chains;
+    }
+
     public void addTiles(Tile t)
     {
         this.playerTiles[14] = t;
