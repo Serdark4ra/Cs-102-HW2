@@ -10,14 +10,38 @@ public class Player {
     }
 
     /*
-     * TODO: checks this player's hand to determine if this player is winning Yusuf Deneme Commit 2
+     * TODO: checks this player's hand to determine if this player is winning 
      * the player with a complete chain of 14 consecutive numbers wins the game
      * note that the player whose turn is now draws one extra tile to have 15 tiles in hand,
      * and the extra tile does not disturb the longest chain and therefore the winning condition
      * check the assigment text for more details on winning condition
      */
+    //MAY
     public boolean checkWinning() {
-        return false;
+        boolean isWinning;
+        //Count how many tile disturbs the chain. It shouldn't be more than 1.
+        int disturbance = 0;
+
+        //i starts from one because if statement checks also the previous element
+        for ( int i = 1; i < this.numberOfTiles && disturbance < 2; i++ )
+        {
+            //Checks the current tile with the previous tile.
+            if ( !this.playerTiles[i].canFormChainWith( this.playerTiles[i-1]) )
+            {
+                disturbance = disturbance + 1;
+            }
+        }
+
+        if ( disturbance == 2 )
+        {
+            isWinning = false;
+        }
+        else
+        {
+            isWinning = true;
+        }
+
+        return isWinning;
     }
 
     /*
