@@ -230,11 +230,23 @@ public class SimplifiedOkeyGame {
         int indexOfFirstDup = 0;
         int indexOfSecondDup = 0;
 
+        int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
+
         //Trying to find duplicated element first
-        for ( int i = 0; i < players[currentPlayerIndex].numberOfTiles; i++)
+        for ( int i = 0; i < numberOfTiles; i++ )
         {
-            for ( int j = i; j <  players[currentPlayerIndex].numberOfTiles; j++)
+            for ( int j = i; j <  numberOfTiles; j++ )
+            {
+                if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[j]) )
+                {
+                    isDuplicated = true;
+                    indexOfFirstDup = i;
+                    indexOfSecondDup = j;
+                }
+            }
         }
+
+        
        
     }
 
