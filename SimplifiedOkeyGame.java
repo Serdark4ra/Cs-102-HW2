@@ -92,10 +92,6 @@ public class SimplifiedOkeyGame {
     // Oğuzhan Demir
     public String getTopTile() 
     {
-        
-        
-        
-        
          // Check if there are still tiles in the stack
         if (tileCount > 0) {
             Tile topTile = tiles[--tileCount];
@@ -107,8 +103,20 @@ public class SimplifiedOkeyGame {
             System.out.println("No more tiles in the stack.");
             return null;
             // If the tile is exhausted it gives a warning.
+        }    
+    }
+
+    public Tile checkTopTile()
+    {
+        if (tileCount > 0)
+        {
+            return tiles[tileCount - 1];
         }
-        
+        else 
+        {
+            System.out.println("No more tiles in the stack");
+            return null;
+        }
     }
 
     public void shuffleTiles() {
