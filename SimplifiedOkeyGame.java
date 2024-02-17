@@ -173,6 +173,19 @@ public class SimplifiedOkeyGame {
         return tileCount != 0;
     }
 
+    public Tile addTopTile()
+    {
+        if (tileCount > 0)
+        {
+            return tiles[tileCount - 1];
+        }
+        else 
+        {
+            System.out.println("No more tiles in the stack");
+            return null;
+        }
+    }
+
     /*
      * TODO: pick a tile for the current computer player using one of the following:
      * - picking from the tiles array using getTopTile()
@@ -181,7 +194,23 @@ public class SimplifiedOkeyGame {
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
-        
+        int currentChainLength = players[currentPlayerIndex].findLongestChain();
+        int possibleChainLength;
+
+        players[currentPlayerIndex].addTile(addTopTile());
+        possibleChainLength = players[currentPlayerIndex].findLongestChain();
+
+        players[currentPlayerIndex].removeLastTile();
+
+        if (possibleChainLength <= currentChainLength)
+        {
+            getTopTile();
+        }
+        else 
+        {
+            // o zaman atılan taşı alacak ama nasıl?
+            players[currentPlayerIndex].addTile(lastDiscardedTile);
+        }
     }
 
     /*
