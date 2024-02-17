@@ -59,6 +59,7 @@ public class Player {
         boolean isChain = false;
 
         for (int index = 0; index < this.numberOfTiles - 1; index++) {
+            //You can use canFormChainWith() method. -Akif
             if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
                 longChain ++;
             }
@@ -98,6 +99,7 @@ public class Player {
     //YBB
     // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
+        
         /*for (int i = 0; i < playerTiles.length; i++) {
             if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
                 for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right

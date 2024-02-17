@@ -227,7 +227,15 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     public void discardTileForComputer() {
+        boolean isDuplicated = false;
+        int indexOfFirstDup = 0;
+        int indexOfSecondDup = 0;
 
+        //Trying to find duplicated element first
+        for ( int i = 0; i < players[currentPlayerIndex].numberOfTiles; i++)
+        {
+            for ( int j = i; j <  players[currentPlayerIndex].numberOfTiles; j++)
+        }
        
     }
 
