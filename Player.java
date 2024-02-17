@@ -46,7 +46,7 @@ public class Player {
     
 
     /*
-     *  used for finding the longest chain in this player hand
+     * used for finding the longest chain in this player hand
      * this method should iterate over playerTiles to find the longest chain
      * of consecutive numbers, used for checking the winning condition
      * and also for determining the winner if tile stack has no tiles
@@ -56,16 +56,16 @@ public class Player {
     public int findLongestChain() {
         int longestChain = 0;
         int longChain = 1;
-        boolean isChain = false;
+        // boolean isChain = false; unnecesarry
 
         for (int index = 0; index < this.numberOfTiles - 1; index++) {
-            //You can use canFormChainWith() method. -Akif
-            if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
+            //You can use canFormChainWith() method. -Akif | thx -YBB
+            if ( playerTiles[index].canFormChainWith(playerTiles[index + 1])){
                 longChain ++;
             }
             else {
                 if (longChain > longestChain){
-                    longestChain = longChain;                    
+                    longestChain = longChain; //update the longest chain lenght         
                 }
                 longChain = 1;
             }
