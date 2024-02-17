@@ -89,7 +89,7 @@ public class ApplicationMain {
                         System.out.println("Congratulations, you win!");    
                     }
                     else{
-                        // TODO: the game ended with no more tiles in the stack
+                        // the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
@@ -125,7 +125,7 @@ public class ApplicationMain {
                         System.out.println(game.getCurrentPlayerName() + " wins.");
                     }
                     else{
-                        // TODO: the game ended with no more tiles in the stack
+                        //  the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara

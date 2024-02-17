@@ -10,7 +10,7 @@ public class Player {
     }
 
     /*
-     * TODO: checks this player's hand to determine if this player is winning Yusuf Deneme Commit 2
+     *  checks this player's hand to determine if this player is winning 
      * the player with a complete chain of 14 consecutive numbers wins the game
      * note that the player whose turn is now draws one extra tile to have 15 tiles in hand,
      * and the extra tile does not disturb the longest chain and therefore the winning condition
@@ -46,7 +46,7 @@ public class Player {
     
 
     /*
-     * TODO: used for finding the longest chain in this player hand
+     *  used for finding the longest chain in this player hand
      * this method should iterate over playerTiles to find the longest chain
      * of consecutive numbers, used for checking the winning condition
      * and also for determining the winner if tile stack has no tiles
@@ -58,7 +58,7 @@ public class Player {
         int longChain = 1;
         boolean isChain = false;
 
-        for (int index = 0; index < playerTiles.length - 1; index++) {
+        for (int index = 0; index < this.numberOfTiles - 1; index++) {
             if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
                 longChain ++;
             }
@@ -84,6 +84,7 @@ public class Player {
         for ( int i = index; i < playerTiles.length; i++){ //shifting all the tiles to the left by one
             playerTiles[index] = playerTiles [index + 1];
         }
+        this.numberOfTiles--;
 
         return targetTile; // return desired tile
     }
@@ -95,15 +96,34 @@ public class Player {
      */
 
     //YBB
+    // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
-        for (int i = 0; i < playerTiles.length; i++) {
+        /*for (int i = 0; i < playerTiles.length; i++) {
             if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
                 for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right
                     playerTiles[j+1] = playerTiles[j];
                 }
                 playerTiles[i] = t; 
             }
+            
+        }*/
+
+        boolean isPlaceFound = false;
+        int suitablePlace = this.numberOfTiles;
+
+        for (int i = 0; i < this.numberOfTiles && !isPlaceFound; i++) {
+            if (playerTiles[i].getValue() >= t.getValue()) {
+                suitablePlace = i;
+                isPlaceFound= true;
+            }
         }
+
+        for (int i = this.numberOfTiles; i > suitablePlace; i--) {
+            playerTiles[i] = playerTiles[i-1];
+        }
+
+        playerTiles[suitablePlace] = t;
+        this.numberOfTiles ++;
     }
 
     /*
