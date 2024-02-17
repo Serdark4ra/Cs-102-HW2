@@ -214,8 +214,7 @@ public class SimplifiedOkeyGame {
         Player currentPlayer = players[currentPlayerIndex];
         int currentChainLength = players[currentPlayerIndex].findLongestChain();
         currentPlayer.addTile(lastDiscardedTile);
-        if (currentPlayer.findLongestChain() < currentChainLength
-                || currentPlayer.findLongestChain() < currentChainLength) {
+        if (currentPlayer.findLongestChain() <= currentChainLength) {
             currentPlayer.getAndRemoveTile(currentPlayer.findPositionOfTile(lastDiscardedTile));
             getTopTile();
         }
