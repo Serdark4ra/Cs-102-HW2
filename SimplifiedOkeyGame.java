@@ -226,13 +226,11 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     public void discardTileForComputer() {
-        int index = (int) (Math.random() * 14);
-        players[currentPlayerIndex].getAndRemoveTile(index);
+        //int index = (int) (Math.random() * 14);
+        //players[currentPlayerIndex].getAndRemoveTile(index);
 
-
-        /*boolean isDone = false;
+        boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
-        int theShortestIndex 
 
         //Trying to find duplicated element first
         for ( int i = 0; i < numberOfTiles && !isDone; i++ )
@@ -242,7 +240,24 @@ public class SimplifiedOkeyGame {
                 players[currentPlayerIndex].getAndRemoveTile(i);
                 isDone = true;
             }
-        } */
+        }
+
+        //Get the tiles as seperated chain array
+        //Determine the shortest tile chain
+        //Determine the right or left
+            //If the smallest chain is first one, discard left-side
+            //If the smallest chain is last one, discard right-side
+            //If it is somewhere in the middle:
+                //If it is not possible to come close with neither with the right nor left, chose right or left randomly.
+                //Else:
+                    //If the smallest chain has neigbourhood with the longest in one side, discard from the other side.
+                    //Else:
+                        //Look the one after and before number.
+                            //Total sequence length of merge - Distance from right-side chain
+                            //Total sequence length of merge - Distance from left-side chain  
+                            //Find the biggest score, discard tile from the other side.
+                                //Else:
+                                    //Discard right or left randomly.
 
 
        
