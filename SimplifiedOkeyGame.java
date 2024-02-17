@@ -34,25 +34,22 @@ public class SimplifiedOkeyGame {
      * other players get 14 tiles, this method assumes the tiles are already shuffled
      */
     //Serdar Kara
+    //Updated
     public void distributeTilesToPlayers() {
-        for (int i = 0; i < 15; i++) {
-            players[0].playerTiles[i] = tiles[i];
-        }
-        for (int i = 15; i < 29; i++) {
-            players[1].playerTiles[i- 15] = tiles[i];
-        }
-        for (int i = 29; i < 43; i++) {
-            players[2].playerTiles[i - 29] = tiles[i];
-        }
-        for (int i = 43; i < 57; i++) {
-            players[3].playerTiles[i - 43] = tiles[i];
-        }
+        int distributionStartPoint = 0;
+        int tileNum;
         for (int i = 0; i < players.length; i++) {
-            if(i == 0){
-                players[i].numberOfTiles = 15;
+            
+            Player currentPlayer = players[i];
+            if (i == 0) {
+                tileNum = 15;
             }else{
-                players[i].numberOfTiles = 14;
+                tileNum = 14;
             }
+            for (int j = distributionStartPoint; j < distributionStartPoint + tileNum; j++) {
+                currentPlayer.addTile(tiles[j]);
+            }
+            distributionStartPoint = distributionStartPoint + tileNum;
         }
     }
 
@@ -184,7 +181,7 @@ public class SimplifiedOkeyGame {
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
-
+        
     }
 
     /*
@@ -193,6 +190,7 @@ public class SimplifiedOkeyGame {
      */
     public void discardTileForComputer() {
 
+       
     }
 
     /*
@@ -201,12 +199,7 @@ public class SimplifiedOkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-        Player currentPlayer =  players[currentPlayerIndex];
-        lastDiscardedTile = currentPlayer.playerTiles[tileIndex];
-        for (int i = tileIndex; i < currentPlayer.numberOfTiles; i++) {
-            currentPlayer.playerTiles[i] = currentPlayer.playerTiles[i + 1];
-        }
-        currentPlayer.playerTiles[currentPlayer.numberOfTiles] = null;
+        lastDiscardedTile = players[currentPlayerIndex].getAndRemoveTile(tileIndex);
     }
 
     public void displayDiscardInformation() {

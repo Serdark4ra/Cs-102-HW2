@@ -57,7 +57,7 @@ public class Player {
         int longChain = 1;
         //boolean isChain = false;
 
-        for (int index = 0; index < playerTiles.length - 1; index++) {
+        for (int index = 0; index < this.numberOfTiles - 1; index++) {
             if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
                 longChain ++;
             }
@@ -83,6 +83,7 @@ public class Player {
         for ( int i = index; i < playerTiles.length; i++){ //shifting all the tiles to the left by one
             playerTiles[index] = playerTiles [index + 1];
         }
+        this.numberOfTiles--;
 
         return targetTile; // return desired tile
     }
@@ -94,15 +95,33 @@ public class Player {
      */
 
     //YBB
+    // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
-        for (int i = 0; i < playerTiles.length; i++) {
+        /*for (int i = 0; i < playerTiles.length; i++) {
             if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
                 for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right
                     playerTiles[j+1] = playerTiles[j];
                 }
                 playerTiles[i] = t; 
             }
+        }*/
+
+        boolean isPlaceFound = false;
+        int suitablePlace = this.numberOfTiles;
+
+        for (int i = 0; i < this.numberOfTiles && !isPlaceFound; i++) {
+            if (playerTiles[i].getValue() >= t.getValue()) {
+                suitablePlace = i;
+                isPlaceFound= true;
+            }
         }
+
+        for (int i = this.numberOfTiles; i > suitablePlace; i--) {
+            playerTiles[i] = playerTiles[i-1];
+        }
+
+        playerTiles[suitablePlace] = t;
+        this.numberOfTiles ++;
     }
 
     /*
