@@ -237,6 +237,7 @@ public class SimplifiedOkeyGame {
         //Trying to find duplicated element first
         for ( int i = 0; i < numberOfTiles && !isDone; i++ )
         {
+<<<<<<< Updated upstream
             if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[i + 1]) )
             {
                 players[currentPlayerIndex].getAndRemoveTile(i);
@@ -245,6 +246,10 @@ public class SimplifiedOkeyGame {
         } */
 
 
+=======
+            for ( int j = i; j <  players[currentPlayerIndex].numberOfTiles; j++);
+        }
+>>>>>>> Stashed changes
        
     }
 
