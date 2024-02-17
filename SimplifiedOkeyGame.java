@@ -244,13 +244,6 @@ public class SimplifiedOkeyGame {
                 isDone = true;
             }
         } */
-
-
-=======
-            for ( int j = i; j <  players[currentPlayerIndex].numberOfTiles; j++);
-        }
->>>>>>> Stashed changes
-       
     }
 
     /*
