@@ -84,6 +84,11 @@ public class ApplicationMain {
                     String outIndexTileError = "Invalid index. Please choose a tile to discard between 0 and 14";
 
                     if (playerChoice < 0 || playerChoice > 14) {
+
+                        if (!firstTurn){
+                            firstTurn = true; //to avoid a false first turn
+                        }
+
                         System.out.println(outIndexTileError);
                     }
                     else {
