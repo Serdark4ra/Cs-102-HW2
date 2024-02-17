@@ -254,7 +254,8 @@ public class SimplifiedOkeyGame {
         for (int i = tileIndex; i < currentPlayer.numberOfTiles; i++) {
             currentPlayer.playerTiles[i-1] = currentPlayer.playerTiles[i];
         }
-        currentPlayer.playerTiles[currentPlayer.numberOfTiles] = null;
+        currentPlayer.playerTiles[currentPlayer.numberOfTiles - 1] = null;
+        currentPlayer.numberOfTiles--;
     }
 
     public void displayDiscardInformation() {
