@@ -201,11 +201,12 @@ public class SimplifiedOkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-        lastDiscardedTile = players[currentPlayerIndex].playerTiles[tileIndex];
-        for (int i = tileIndex; i < players[currentPlayerIndex].numberOfTiles; i++) {
-            players[currentPlayerIndex].playerTiles[i] = players[currentPlayerIndex].playerTiles[i + 1];
+        Player currentPlayer =  players[currentPlayerIndex];
+        lastDiscardedTile = currentPlayer.playerTiles[tileIndex];
+        for (int i = tileIndex; i < currentPlayer.numberOfTiles; i++) {
+            currentPlayer.playerTiles[i] = currentPlayer.playerTiles[i + 1];
         }
-        players[currentPlayerIndex].playerTiles[players[currentPlayerIndex].numberOfTiles] = null;
+        currentPlayer.playerTiles[currentPlayer.numberOfTiles] = null;
     }
 
     public void displayDiscardInformation() {
