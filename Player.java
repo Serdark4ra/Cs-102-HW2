@@ -59,6 +59,7 @@ public class Player {
         boolean isChain = false;
 
         for (int index = 0; index < this.numberOfTiles - 1; index++) {
+            //You can use canFormChainWith() method. -Akif
             if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
                 longChain ++;
             }
