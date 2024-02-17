@@ -234,6 +234,7 @@ public class SimplifiedOkeyGame {
         }
         else 
         {
+            //this.getLastDiscardedTile() may works
             // o zaman atılan taşı alacak ama nasıl?   
         }
         
