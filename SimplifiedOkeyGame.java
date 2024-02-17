@@ -92,6 +92,10 @@ public class SimplifiedOkeyGame {
     // Oğuzhan Demir
     public String getTopTile() 
     {
+        
+        
+        
+        
          // Check if there are still tiles in the stack
         if (tileCount > 0) {
             Tile topTile = tiles[--tileCount];
@@ -144,6 +148,11 @@ public class SimplifiedOkeyGame {
             {
                 isFinish = true;
             }
+        }
+
+        if (!hasMoreTileInStack())
+        {
+            isFinish = true;
         }
 
         return isFinish;
@@ -202,6 +211,7 @@ public class SimplifiedOkeyGame {
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
+
 
     }
 
