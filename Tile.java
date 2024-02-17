@@ -68,4 +68,9 @@ public class Tile {
         return this.value;
     }
 
+    public void setValue(int i)
+    {
+        this.value = i;
+    }
+
 }

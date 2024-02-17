@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class SimplifiedOkeyGame {
 
@@ -6,6 +7,7 @@ public class SimplifiedOkeyGame {
     Tile[] tiles;
     int tileCount;
 
+    Random rnd = new Random();
     Tile lastDiscardedTile;
 
     int currentPlayerIndex = 0;
@@ -106,15 +108,15 @@ public class SimplifiedOkeyGame {
      */
     // Oğuzhan Demir
     public void shuffleTiles() {
-        for (int i = 0; i < tiles.length - 1; i++) 
-        {
-            int randomIndex = (int) (Math.random() * (i + 1));
-            // Swap elements of tiles
-            Tile temporaryTile = tiles[i];
-            tiles[i] = tiles[randomIndex];
-            tiles[randomIndex] = temporaryTile;
-        }
+        for (int i = 0; i < 100; i++)
+        { 
+            int r1 = rnd.nextInt(tiles.length);
+            int r2 = rnd.nextInt(tiles.length);
+            int t = tiles[r1].getValue();
 
+            tiles[r1].setValue(tiles[r2].getValue());
+            tiles[r2].setValue(t);
+        }
     }
 
     /*
