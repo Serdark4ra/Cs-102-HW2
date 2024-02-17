@@ -106,7 +106,7 @@ public class SimplifiedOkeyGame {
         }    
     }
 
-    public Tile checkTopTile()
+    public Tile addTopTile()
     {
         if (tileCount > 0)
         {
@@ -219,8 +219,25 @@ public class SimplifiedOkeyGame {
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
+        
+        int currentChainLength = players[currentPlayerIndex].findLongestChain();
+        int possibleChainLength;
 
+        players[currentPlayerIndex].addTile(addTopTile());
+        possibleChainLength = players[currentPlayerIndex].findLongestChain();
 
+        players[currentPlayerIndex].removeLastTile();
+
+        if (possibleChainLength <= currentChainLength)
+        {
+            getTopTile();
+        }
+        else 
+        {
+            // o zaman atılan taşı alacak ama nasıl?   
+        }
+        
+    
     }
 
     /*
