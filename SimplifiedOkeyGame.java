@@ -125,7 +125,17 @@ public class SimplifiedOkeyGame {
      * finished the game. use checkWinning method of the player class to determine
      */
     public boolean didGameFinish() {
-        return false;
+
+        boolean isAnyoneWins = false;
+
+        //For each loop is used in order to visit every player and check whether they finished or not.
+        for (Player player : players) {
+            if ( player.checkWinning() )
+            {
+                isAnyoneWins = true;
+            }
+        }
+        return isAnyoneWins;
     }
 
     /* TODO: finds the player who has the highest number for the longest chain
