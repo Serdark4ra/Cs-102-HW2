@@ -252,7 +252,7 @@ public class SimplifiedOkeyGame {
         Player currentPlayer =  players[currentPlayerIndex];
         lastDiscardedTile = currentPlayer.playerTiles[tileIndex];
         for (int i = tileIndex; i < currentPlayer.numberOfTiles; i++) {
-            currentPlayer.playerTiles[i] = currentPlayer.playerTiles[i + 1];
+            currentPlayer.playerTiles[i-1] = currentPlayer.playerTiles[i];
         }
         currentPlayer.playerTiles[currentPlayer.numberOfTiles] = null;
     }
