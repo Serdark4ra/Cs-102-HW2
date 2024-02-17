@@ -10,7 +10,7 @@ public class Player {
     }
 
     /*
-     * TODO: checks this player's hand to determine if this player is winning 
+     * TODO: checks this player's hand to determine if this player is winning Yusuf Deneme Commit 2
      * the player with a complete chain of 14 consecutive numbers wins the game
      * note that the player whose turn is now draws one extra tile to have 15 tiles in hand,
      * and the extra tile does not disturb the longest chain and therefore the winning condition
@@ -43,6 +43,7 @@ public class Player {
 
         return isWinning;
     }
+    
 
     /*
      * TODO: used for finding the longest chain in this player hand
@@ -55,7 +56,7 @@ public class Player {
     public int findLongestChain() {
         int longestChain = 0;
         int longChain = 1;
-        //boolean isChain = false;
+        boolean isChain = false;
 
         for (int index = 0; index < playerTiles.length - 1; index++) {
             if ( playerTiles[index].getValue() + 1 == playerTiles[index + 1].getValue()){
@@ -79,7 +80,7 @@ public class Player {
     //YBB
     public Tile getAndRemoveTile(int index) {
         Tile targetTile = playerTiles[index];
-
+        
         for ( int i = index; i < playerTiles.length; i++){ //shifting all the tiles to the left by one
             playerTiles[index] = playerTiles [index + 1];
         }
@@ -129,6 +130,16 @@ public class Player {
             }
         }
         System.out.println();
+    }
+
+    public void addTiles(Tile t)
+    {
+        this.playerTiles[14] = t;
+    }
+
+    public void removeLastTile()
+    {
+        this.playerTiles[playerTiles.length - 1] = null;
     }
 
     public Tile[] getTiles() {
