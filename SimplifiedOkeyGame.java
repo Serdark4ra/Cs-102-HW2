@@ -211,12 +211,8 @@ public class SimplifiedOkeyGame {
         return tileCount != 0;
     }
 
-    /*
-     * TODO: pick a tile for the current computer player using one of the following:
-     * - picking from the tiles array using getTopTile()
-     * - picking from the lastDiscardedTile using getLastDiscardedTile()
-     * you should check if getting the discarded tile is useful for the computer
-     * by checking if it increases the longest chain length, if not get the top tile
+    /**
+     * calısmıyor olabilir fikrim yok - altan
      */
     public void pickTileForComputer() {
         
@@ -234,11 +230,9 @@ public class SimplifiedOkeyGame {
         }
         else 
         {
-            //this.getLastDiscardedTile() may works
-            // o zaman atılan taşı alacak ama nasıl?   
-        }
-        
-    
+            // o zaman atılan taşı alacak ama nasıl?
+            players[currentPlayerIndex].addTile(lastDiscardedTile);
+        }    
     }
 
     /*
