@@ -65,7 +65,7 @@ public class Player {
             }
             else {
                 if (longChain > longestChain){
-                    longestChain = longChain; //update the longest chain lenght         
+                    longestChain = longChain; //update the longest chains lenght         
                 }
                 longChain = 1;
             }
