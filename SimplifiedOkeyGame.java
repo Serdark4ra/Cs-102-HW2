@@ -106,7 +106,6 @@ public class SimplifiedOkeyGame {
     /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
-    // Oğuzhan Demir
     public void shuffleTiles() {
         for (int i = 0; i < 100; i++)
         { 
