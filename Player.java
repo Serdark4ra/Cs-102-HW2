@@ -82,7 +82,7 @@ public class Player {
     public Tile getAndRemoveTile(int index) {
         Tile targetTile = playerTiles[index];
         
-        for ( int i = index; i < playerTiles.length; i++){ //shifting all the tiles to the left by one
+        for ( int i = index; i < playerTiles.length - 1; i++){ //shifting all the tiles to the left by one
             playerTiles[index] = playerTiles [index + 1];
         }
         this.numberOfTiles--;
