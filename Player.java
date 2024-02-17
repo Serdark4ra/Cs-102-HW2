@@ -98,6 +98,7 @@ public class Player {
     //YBB
     // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
+        
         /*for (int i = 0; i < playerTiles.length; i++) {
             if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
                 for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right
