@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Player {
     String playerName;
     Tile[] playerTiles;
@@ -152,6 +154,58 @@ public class Player {
             }
         }
         System.out.println();
+    }
+
+    /**
+     * This method separates the chains that user have as seperated Tile arrays.
+     * @return
+     */
+    public Tile[][] seperateChains() {
+        Tile[][] chains = new Tile[15][15];
+        int chainIndex = 0;
+        int tileIndex = 0;
+
+        //Initial insertion
+        chains[chainIndex][tileIndex] = this.playerTiles[tileIndex];
+        tileIndex = tileIndex + 1;
+
+        //For loop guarantees not to exceed the playerTiles array
+        for ( int i = 0; i < this.numberOfTiles - 1; i++ )
+        {
+            //If there cannot be a chain anymore, start new chain.
+            if ( !this.playerTiles[i].canFormChainWith(this.playerTiles[i + 1]) )
+            {
+                //Shrink the chain and adjust variables.
+                chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex + 1);
+                chainIndex = chainIndex + 1;
+                tileIndex = 0;
+            }
+            //Insert tiles.
+            chains[chainIndex][tileIndex] = this.playerTiles[i + 1];
+            tileIndex = tileIndex + 1;
+        }
+
+        //Shrink the complete array and return.
+        chains = Arrays.copyOf(chains, chainIndex + 1);
+        return chains;
+
+
+        //I THINK IT IS NOT A GOOD APPROACH, IT IS VERY BUGGY. -Akif
+        /*
+        while ( tileIndex <= this.numberOfTiles )
+        {
+            do 
+            {
+                chains[chainIndex][tileIndex] = this.playerTiles[tileIndex];
+                tileIndex = tileIndex + 1;
+            }while ( this.playerTiles[tileIndex].canFormChainWith(this.playerTiles[tileIndex - 1]) );
+
+            chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex + 1);
+            tileIndex = 0;
+            chainIndex = chainIndex + 1;
+        } */
+
+
     }
 
     public void addTiles(Tile t)

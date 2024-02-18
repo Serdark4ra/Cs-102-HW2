@@ -221,12 +221,137 @@ public class SimplifiedOkeyGame {
     }
 
     /*
-     * TODO: Current computer player will discard the least useful tile.
+     * Current computer player will discard the least useful tile.
      * you may choose based on how useful each tile is
      */
     //-MAY
     public void discardTileForComputer() {
+        boolean isDone = false;
+        int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
 
+        //Trying to find duplicated element first
+        for ( int i = 0; i < numberOfTiles && !isDone; i++ )
+        {
+            if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[i + 1]) )
+            {
+                this.players[currentPlayerIndex].getAndRemoveTile(i);
+                isDone = true;
+            }
+        }
+
+        if ( !isDone )
+        {
+            //Get the tiles as seperated chain array
+            Tile[][] chains = players[currentPlayerIndex].seperateChains();
+
+            //Determine the shortest tile chain
+            int shortestIndex = 0;
+            int largestIndex = 0;
+
+            for ( int i = 0; i < chains.length; i++ )
+            {
+                if ( chains[i].length < chains[shortestIndex].length )
+                {
+                    shortestIndex = i;
+                }
+            }
+
+            for ( int i = 0; i < chains.length; i++ )
+            {
+                if ( chains[i].length < chains[largestIndex].length )
+                {
+                    largestIndex = i;
+                }
+            }
+
+            //Determine the right or left
+            //If the smallest chain is first one, discard first tile
+            if ( shortestIndex == 0)
+            {
+                this.players[currentPlayerIndex].getAndRemoveTile(0);
+            }
+
+            //If the smallest chain is last one, discard last tile
+            else if ( shortestIndex == chains.length - 1)
+            {
+                this.players[currentPlayerIndex].getAndRemoveTile(numberOfTiles);
+            }
+
+            //If it is somewhere in the middle:
+            else
+            {
+                //Locate the start index of the chain
+                int firstIndexOfShortest = 0;
+                int lastIndexOfShortest = 0;
+
+                int i = 0;
+                while ( i < shortestIndex )
+                {
+                    firstIndexOfShortest = chains[i].length;
+                }
+
+                lastIndexOfShortest = firstIndexOfShortest + chains[shortestIndex].length;
+
+                //If the smallest chain has neigbourhood with the longest in one side, discard from the other side.
+                if ( Math.abs(shortestIndex - largestIndex) == 1 )
+                {
+                    int diff = largestIndex - shortestIndex;
+                    int removeIndex = 0;
+                    
+                    if ( diff == -1)
+                    {
+                        removeIndex = lastIndexOfShortest;
+                    }
+                    else
+                    {
+                        removeIndex = firstIndexOfShortest;
+                    }
+                    this.players[currentPlayerIndex].getAndRemoveTile(removeIndex);
+                }
+
+                //Look the one after and before number.
+                else
+                {
+                    Tile[] shortestChain = chains[shortestIndex];
+                    Tile[] rightChain = chains[shortestIndex + 1];
+                    Tile[] leftChain = chains[shortestIndex - 1];
+                    int scoreWithRight = 0;
+                    int scoreWithLeft = 0;
+
+
+                    //Total sequence length of merge - Distance from nearby chain
+                    scoreWithRight =  shortestChain.length + rightChain.length - (rightChain[0].getValue() - shortestChain[shortestChain.length - 1].getValue());
+                    scoreWithLeft =  shortestChain.length + leftChain.length - (leftChain[leftChain.length - 1].getValue() - shortestChain[0].getValue()); 
+
+                    //Find the biggest score, discard tile from the other side.
+                    if ( scoreWithLeft > scoreWithRight )
+                    {
+                        this.players[currentPlayerIndex].getAndRemoveTile(firstIndexOfShortest);
+                    } 
+                    else if ( scoreWithRight > scoreWithLeft )
+                    {
+                        this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                    }
+                    //Discard right or left randomly.
+                    else
+                    {
+                        int random = (int)(Math.random() * 100);
+
+                        if ( random <= 50)
+                        {
+                            this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                        }
+                        else
+                        {
+                            this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                        }
+                    }
+                }
+            }
+            //If it is not possible to come close with neither with the right nor left, chose right or left randomly.
+            //Not sure how to do
+            //if ( chains[shortestIndex][chains[shortestIndex].length - 1] )
+        }
     }
 
     /*
