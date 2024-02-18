@@ -30,16 +30,36 @@ public class SimplifiedOkeyGame {
         tileCount = 104;
     }
 
-    /*
-     * distributes the starting tiles to the players
-     * player at index 0 gets 15 tiles and starts first
-     * other players get 14 tiles, this method assumes the tiles are already
-     * shuffled
+    /**
+     * en üstteki karttan başlayarak oyunculara kartları dağıtır.
      */
-    // Serdar Kara
-    // Updated
     public void distributeTilesToPlayers() {
-        int distributionStartPoint = 0;
+        
+        int tileNum;
+
+        for (int i = 0; i < players.length; i++)
+        {            
+            if (i == 0) 
+            {
+                tileNum = 15;
+            } 
+            else 
+            {
+                tileNum = 14;
+            }
+           
+            for (int j = 0; j < tileNum; j++)
+            {
+                players[i].addTile(tiles[tileCount - 1]);
+                tiles[tileCount - 1] = null;
+                tileCount--;
+            }
+        }
+        
+       
+        
+        
+        /*int distributionStartPoint = 0;
         int tileNum;
         for (int i = 0; i < players.length; i++) {
 
@@ -51,11 +71,11 @@ public class SimplifiedOkeyGame {
             }
             for (int j = distributionStartPoint; j < distributionStartPoint + tileNum; j++) {
                 currentPlayer.addTile(tiles[j]);
-                tiles[j] = null;
-                tileCount--;
             }
             distributionStartPoint = distributionStartPoint + tileNum;
         }
+        tileCount = 47;*/
+
     }
 
     /*
@@ -404,7 +424,7 @@ public class SimplifiedOkeyGame {
 
     public void ortadakiKartlariGöster()
     {
-        for (int i = 0; i < tiles.length; i++)
+        for (int i = 0; i < tileCount; i++)
         {
             System.out.print(" " + tiles[i]);
         }

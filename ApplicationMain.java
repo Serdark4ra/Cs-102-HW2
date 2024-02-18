@@ -40,8 +40,8 @@ public class ApplicationMain {
                 //-----buranın altı silinecek sadece hatayı çözmek için ekledim
                     /*game.displayAllTilesInHands();
                     System.out.println("----------");
-                    game.ortadakiKartlariGöster();*/
-                //------buranın üstü silinecek
+                    game.ortadakiKartlariGöster();
+                //------buranın üstü silinecek*/
 
                 System.out.println("What will you do?");
 
