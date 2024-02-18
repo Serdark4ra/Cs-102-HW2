@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Player {
     String playerName;
     Tile[] playerTiles;
@@ -172,25 +174,13 @@ public class Player {
                 tileIndex = tileIndex + 1;
             }while ( this.playerTiles[tileIndex].canFormChainWith(this.playerTiles[tileIndex - 1]) );
 
-            chains[chainIndex] = this.shrinkTileArray(chains[chainIndex] , tileIndex);
+            chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex + 1);
             tileIndex = 0;
             chainIndex = chainIndex + 1;
         }
 
-        
+        chains = Arrays.copyOf(chains, chainIndex + 1);
         return chains;
-    }
-
-    private Tile[] shrinkTileArray(Tile[] tiles, int bound)
-    {
-        Tile[] shrinkedTiles = new Tile[bound + 1];
-
-        for ( int i = 0; i <= bound; i++)
-        {
-            shrinkedTiles[i] = tiles[i];
-        }
-        
-        return shrinkedTiles;
     }
 
     public void addTiles(Tile t)
