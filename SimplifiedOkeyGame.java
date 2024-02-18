@@ -227,9 +227,6 @@ public class SimplifiedOkeyGame {
      */
     //-MAY
     public void discardTileForComputer() {
-        //int index = (int) (Math.random() * 14);
-        //players[currentPlayerIndex].getAndRemoveTile(index);
-
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
 
