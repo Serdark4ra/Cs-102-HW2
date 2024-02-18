@@ -224,25 +224,9 @@ public class SimplifiedOkeyGame {
      * TODO: Current computer player will discard the least useful tile.
      * you may choose based on how useful each tile is
      */
+    //-MAY
     public void discardTileForComputer() {
-        int index = (int) (Math.random() * 14);
-        players[currentPlayerIndex].getAndRemoveTile(index);
 
-
-        /*boolean isDone = false;
-        int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
-        int theShortestIndex 
-
-        //Trying to find duplicated element first
-        for ( int i = 0; i < numberOfTiles && !isDone; i++ )
-        {
-<<<<<<< Updated upstream
-            if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[i + 1]) )
-            {
-                players[currentPlayerIndex].getAndRemoveTile(i);
-                isDone = true;
-            }
-        } */
     }
 
     /*
