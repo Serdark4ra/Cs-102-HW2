@@ -51,6 +51,8 @@ public class SimplifiedOkeyGame {
             }
             for (int j = distributionStartPoint; j < distributionStartPoint + tileNum; j++) {
                 currentPlayer.addTile(tiles[j]);
+                tiles[j] = null;
+                tileCount--;
             }
             distributionStartPoint = distributionStartPoint + tileNum;
         }
@@ -388,6 +390,23 @@ public class SimplifiedOkeyGame {
     public void setPlayerName(int index, String name) {
         if (index >= 0 && index <= 3) {
             players[index] = new Player(name);
+        }
+    }
+    
+    public void displayAllTilesInHands()
+    {
+        for (Player p : players)
+        {
+            System.out.println("player: " + p.getName());
+            p.displayTiles();
+        }
+    }
+
+    public void ortadakiKartlariGöster()
+    {
+        for (int i = 0; i < tiles.length; i++)
+        {
+            System.out.print(" " + tiles[i]);
         }
     }
 

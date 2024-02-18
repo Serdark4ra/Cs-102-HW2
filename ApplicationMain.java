@@ -17,7 +17,7 @@ public class ApplicationMain {
         game.createTiles();
         game.shuffleTiles();
         game.distributeTilesToPlayers();
-
+        game.displayAllTilesInHands();
         // developer mode is used for seeing the computer players hands, to be used for debugging
         System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
         char devMode = sc.next().charAt(0);
@@ -36,6 +36,12 @@ public class ApplicationMain {
                 // this is the human player's turn
                 game.displayCurrentPlayersTiles();
                 game.displayDiscardInformation();
+                
+                //-----buranın altı silinecek sadece hatayı çözmek için ekledim
+                    /*game.displayAllTilesInHands();
+                    System.out.println("----------");
+                    game.ortadakiKartlariGöster();*/
+                //------buranın üstü silinecek
 
                 System.out.println("What will you do?");
 
@@ -121,7 +127,7 @@ public class ApplicationMain {
                 if(devModeOn) {
                     game.displayCurrentPlayersTiles();
                 }
-
+                
                 // computer picks a tile from tile stack or other player's discard
                 game.pickTileForComputer();
 
