@@ -160,18 +160,37 @@ public class Player {
      */
     public Tile[][] seperateChains() {
         Tile[][] chains = new Tile[15][15];
-        int j = 0;
+        int chainIndex = 0;
+        int tileIndex = 0;
 
         //Not done..
-        for ( int i = 0; i < this.numberOfTiles; i++ )
+        while ( tileIndex <= this.numberOfTiles )
         {
-            chains[j][0] = this.playerTiles[i];
-            while ( this.playerTiles[i].canFormChainWith(this.playerTiles[i + 1]) )
+            do 
             {
+                chains[chainIndex][tileIndex] = this.playerTiles[tileIndex];
+                tileIndex = tileIndex + 1;
+            }while ( this.playerTiles[tileIndex].canFormChainWith(this.playerTiles[tileIndex - 1]) );
 
-            }
+            chains[chainIndex] = this.shrinkTileArray(chains[chainIndex] , tileIndex);
+            tileIndex = 0;
+            chainIndex = chainIndex + 1;
         }
+
+        
         return chains;
+    }
+
+    private Tile[] shrinkTileArray(Tile[] tiles, int bound)
+    {
+        Tile[] shrinkedTiles = new Tile[bound + 1];
+
+        for ( int i = 0; i <= bound; i++)
+        {
+            shrinkedTiles[i] = tiles[i];
+        }
+        
+        return shrinkedTiles;
     }
 
     public void addTiles(Tile t)
