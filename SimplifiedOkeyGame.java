@@ -245,7 +245,7 @@ public class SimplifiedOkeyGame {
     /**
      * discardTileForComputer2 düzeltilince bunu silebiliriz.
      */
-    public void discardTileForComputer()
+    public void discardTileForComputer2()
     {
         this.discardTile(0);
     }
@@ -255,18 +255,20 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     //-MAY
-    public void discardTileForComputer2() {
+    public void discardTileForComputer() {
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
+        int theIndex = 0;
         
         //Trying to find duplicated element first
         
         //Trying to find duplicated element first
-        for ( int i = 0; i < numberOfTiles && !isDone; i++ )
+        for ( int i = 0; i < numberOfTiles - 1  && !isDone; i++ )
         {
             if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[i + 1]) )
             {
-                this.players[currentPlayerIndex].getAndRemoveTile(i);
+                //this.players[currentPlayerIndex].getAndRemoveTile(i);
+                theIndex = i;
                 isDone = true;
             }
         }
@@ -301,13 +303,15 @@ public class SimplifiedOkeyGame {
             //If the smallest chain is first one, discard first tile
             if ( shortestIndex == 0)
             {
-                this.players[currentPlayerIndex].getAndRemoveTile(0);
+                //this.players[currentPlayerIndex].getAndRemoveTile(0);
+                theIndex = 0;
             }
 
             //If the smallest chain is last one, discard last tile
             else if ( shortestIndex == chains.length - 1)
             {
-                this.players[currentPlayerIndex].getAndRemoveTile(numberOfTiles);
+                //this.players[currentPlayerIndex].getAndRemoveTile(numberOfTiles);
+                theIndex = numberOfTiles - 1;
             }
 
             //If it is somewhere in the middle:
@@ -316,7 +320,7 @@ public class SimplifiedOkeyGame {
                 //Locate the start index of the chain
                 int firstIndexOfShortest = 0;
                 int lastIndexOfShortest = 0;
-
+                ///NEEDS SOME IMPROVEMENT, INFINITE LOOP
                 int i = 0;
                 while ( i < shortestIndex )
                 {
@@ -339,7 +343,8 @@ public class SimplifiedOkeyGame {
                     {
                         removeIndex = firstIndexOfShortest;
                     }
-                    this.players[currentPlayerIndex].getAndRemoveTile(removeIndex);
+                    //this.players[currentPlayerIndex].getAndRemoveTile(removeIndex);
+                    theIndex = removeIndex;
                 }
 
                 //Look the one after and before number.
@@ -359,11 +364,13 @@ public class SimplifiedOkeyGame {
                     //Find the biggest score, discard tile from the other side.
                     if ( scoreWithLeft > scoreWithRight )
                     {
-                        this.players[currentPlayerIndex].getAndRemoveTile(firstIndexOfShortest);
+                        theIndex = firstIndexOfShortest;
+                        //this.players[currentPlayerIndex].getAndRemoveTile(firstIndexOfShortest);
                     } 
                     else if ( scoreWithRight > scoreWithLeft )
                     {
-                        this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                        theIndex = lastIndexOfShortest;
+                        //this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
                     }
                     //Discard right or left randomly.
                     else
@@ -372,11 +379,13 @@ public class SimplifiedOkeyGame {
 
                         if ( random <= 50)
                         {
-                            this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                            theIndex = lastIndexOfShortest;
+                            //this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
                         }
                         else
                         {
-                            this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
+                            theIndex = firstIndexOfShortest;
+                            //this.players[currentPlayerIndex].getAndRemoveTile(lastIndexOfShortest);
                         }
                     }
                 }
@@ -384,6 +393,16 @@ public class SimplifiedOkeyGame {
             //If it is not possible to come close with neither with the right nor left, chose right or left randomly.
             //Not sure how to do
             //if ( chains[shortestIndex][chains[shortestIndex].length - 1] )
+        }
+
+        if ( theIndex <= 14 || theIndex >= 0)
+        {
+            this.discardTile(theIndex);
+        }
+        else
+        {
+            System.out.println("Error occured. The index is: " + theIndex + " First tile discarding..");
+            this.discardTile(0);
         }
     }
 
