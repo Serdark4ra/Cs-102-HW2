@@ -241,16 +241,26 @@ public class SimplifiedOkeyGame {
             getTopTile();
         }
     }
+    
+    /**
+     * discardTileForComputer2 düzeltilince bunu silebiliriz.
+     */
+    public void discardTileForComputer()
+    {
+        this.discardTile(0);
+    }
 
     /*
      * Current computer player will discard the least useful tile.
      * you may choose based on how useful each tile is
      */
     //-MAY
-    public void discardTileForComputer() {
+    public void discardTileForComputer2() {
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
-
+        
+        //Trying to find duplicated element first
+        
         //Trying to find duplicated element first
         for ( int i = 0; i < numberOfTiles && !isDone; i++ )
         {
@@ -260,6 +270,7 @@ public class SimplifiedOkeyGame {
                 isDone = true;
             }
         }
+
 
         if ( !isDone )
         {

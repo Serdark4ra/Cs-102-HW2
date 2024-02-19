@@ -76,20 +76,22 @@ public class Player {
         return longestChain;
     }
 
-    /*
-     * removes and returns the tile in given index position
+    /**
+     * beyler tüm metodlara su java doc yorumlarını ekleyelim bi ara.
+     * @param index
+     * @return
      */
-
-    //YBB
     public Tile getAndRemoveTile(int index) {
-        Tile targetTile = playerTiles[index];
         
-        for ( int i = index; i < playerTiles.length - 1; i++){ //shifting all the tiles to the left by one
-            playerTiles[index] = playerTiles [index + 1];
+        Tile targetTile = playerTiles[index];
+        //shifting all the tiles to the left by one
+        for ( int i = index; i < playerTiles.length - 1; i++)
+        { 
+            playerTiles[i] = playerTiles [i + 1];
         }
         this.numberOfTiles--;
 
-        return targetTile; // return desired tile
+        return targetTile; // return desired tile 
     }
 
     /*
