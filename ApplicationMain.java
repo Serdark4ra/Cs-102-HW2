@@ -150,7 +150,7 @@ public class ApplicationMain {
                     game.passTurnToNextPlayer();
                 }
                 else{
-                    if(!game.didGameFinish()) {
+                    if(game.didGameFinish()) { // ! is removed to solve wrong player wins error 
                         // current computer character wins
                         System.out.println(game.getCurrentPlayerName() + " wins.");
                     }
