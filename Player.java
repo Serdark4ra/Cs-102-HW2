@@ -85,10 +85,11 @@ public class Player {
         
         Tile targetTile = playerTiles[index];
         //shifting all the tiles to the left by one
-        for ( int i = index; i < playerTiles.length - 1; i++)
+        for ( int i = index; i < numberOfTiles - 1; i++)
         { 
             playerTiles[i] = playerTiles [i + 1];
         }
+        this.playerTiles[numberOfTiles - 1] = null;
         this.numberOfTiles--;
 
         return targetTile; // return desired tile 
