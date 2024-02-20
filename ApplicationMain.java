@@ -55,11 +55,22 @@ public class ApplicationMain {
                     System.out.println("1. Discard Tile");
                 }
 
-                System.out.print("Your choice: ");
-                playerChoice = sc.nextInt();
+                
 
                 // after the first turn we can pick up
                 if(!firstTurn) {
+                    // To ensure user enters 1 or 2 
+                    // Serdar Kara
+                    boolean playerChoiceValidityTest = true;
+                    while (playerChoiceValidityTest) {
+                        System.out.print("Your choice: ");
+                        playerChoice = sc.nextInt();
+                        if (playerChoice == 2 || playerChoice == 1) {
+                            playerChoiceValidityTest = false;
+                        }else{
+                            System.out.println("Invalid Choice Number!");
+                        }
+                    }
                     if(playerChoice == 1) {
                         System.out.println("You picked up: " + game.getTopTile());
                         firstTurn = false;
