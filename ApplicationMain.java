@@ -27,22 +27,16 @@ public class ApplicationMain {
         boolean gameContinues = true;
         int playerChoice = -1;
 
-        Boolean playerChoseCorrectIndex = true;
-
         while(gameContinues) {
 
-            int currentPlayer = game.getCurrentPlayerIndex();            
-            if (playerChoseCorrectIndex){       // to avoid repeated printed text
-                System.out.println(game.getCurrentPlayerName() + "'s turn.");
-            }
+            int currentPlayer = game.getCurrentPlayerIndex();           
+            System.out.println(game.getCurrentPlayerName() + "'s turn.");            
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
 
-                if (playerChoseCorrectIndex){       // to avoid repeated printed text
-                    game.displayCurrentPlayersTiles();
-                    game.displayDiscardInformation();
-                }                
+                game.displayCurrentPlayersTiles();
+                game.displayDiscardInformation();
                 
                 //-----buranın altı silinecek sadece hatayı çözmek için ekledim
                 /*  game.displayAllTilesInHands();
@@ -98,30 +92,33 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game continues we need to discard a tile using the given index by the player
-                    System.out.println("Which tile you will discard?");
-                    System.out.print("Discard the tile in index: ");
-                    playerChoice = sc.nextInt();
+                    System.out.println("Which tile you will discard?");                    
 
-                    // make sure the given index is correct, should be 0 <= index <= 14
-
-                    // YBB
+                    
+                    // This part guarentees player gives an integer (positive) and program doesn't crash -YBB
+                    String tileDiscardText = "Discard the tile in index: ";
                     String outIndexTileError = "Invalid index. Please choose a tile to discard between 0 and 14";
 
-                    if (playerChoice < 0 || playerChoice > 14) {
-
-                        playerChoseCorrectIndex = false;
-                        if (!firstTurn){
-                            firstTurn = true; //to avoid a false first turn
+                    do {
+                        System.out.print(tileDiscardText);
+                        while (!sc.hasNextInt()) {      
+                            System.out.println(outIndexTileError); // if no integer, then give error message and ask again - YBB
+                            System.out.print(tileDiscardText);
+                            sc.nextLine();                            
                         }
+                        playerChoice = sc.nextInt();
 
-                        System.out.println(outIndexTileError);
-                    }
-                    else {
+                        if (playerChoice < 0 || playerChoice > 14){
+                            System.out.println(outIndexTileError);
+                        }
+                        
+                    } while (playerChoice < 0 || playerChoice > 14); // also handles the range of the index is correct - YBB
 
-                        playerChoseCorrectIndex = true;
-                        game.discardTile(playerChoice);
-                        game.passTurnToNextPlayer();
-                    }
+                    // make sure the given index is correct, should be 0 <= index <= 14
+                    
+                    game.discardTile(playerChoice);
+                    game.passTurnToNextPlayer();
+
                 }
                 else{
                     if(!game.didGameFinish()) {
