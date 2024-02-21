@@ -160,7 +160,12 @@ public class ApplicationMain {
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
                         Player[] winners = game.getPlayerWithHighestLongestChain();
-                        System.out.print("Winners are : ");
+                        if (winners.length == 1 ) {
+                            System.out.println("Winner is : ");
+                        }else{
+                            System.out.print("Winners are : ");
+                        }
+                        
                         for (int i = 0; i < winners.length; i++) {
                             System.out.print(winners[i].getName() + " ");
                         }
