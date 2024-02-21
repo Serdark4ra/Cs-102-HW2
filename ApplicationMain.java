@@ -27,15 +27,22 @@ public class ApplicationMain {
         boolean gameContinues = true;
         int playerChoice = -1;
 
+        Boolean playerChoseCorrectIndex = true;
+
         while(gameContinues) {
-            
-            int currentPlayer = game.getCurrentPlayerIndex();
-            System.out.println(game.getCurrentPlayerName() + "'s turn.");
+
+            int currentPlayer = game.getCurrentPlayerIndex();            
+            if (playerChoseCorrectIndex){       // to avoid repeated printed text
+                System.out.println(game.getCurrentPlayerName() + "'s turn.");
+            }
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
-                game.displayCurrentPlayersTiles();
-                game.displayDiscardInformation();
+
+                if (playerChoseCorrectIndex){       // to avoid repeated printed text
+                    game.displayCurrentPlayersTiles();
+                    game.displayDiscardInformation();
+                }                
                 
                 //-----buranın altı silinecek sadece hatayı çözmek için ekledim
                 /*  game.displayAllTilesInHands();
@@ -102,6 +109,7 @@ public class ApplicationMain {
 
                     if (playerChoice < 0 || playerChoice > 14) {
 
+                        playerChoseCorrectIndex = false;
                         if (!firstTurn){
                             firstTurn = true; //to avoid a false first turn
                         }
@@ -109,6 +117,8 @@ public class ApplicationMain {
                         System.out.println(outIndexTileError);
                     }
                     else {
+
+                        playerChoseCorrectIndex = true;
                         game.discardTile(playerChoice);
                         game.passTurnToNextPlayer();
                     }
