@@ -92,8 +92,7 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game continues we need to discard a tile using the given index by the player
-                    System.out.println("Which tile you will discard?");                    
-
+                    System.out.println("Which tile you will discard?");
                     
                     // This part guarentees player gives an integer (positive) and program doesn't crash -YBB
                     String tileDiscardText = "Discard the tile in index: ";
@@ -104,7 +103,7 @@ public class ApplicationMain {
                         while (!sc.hasNextInt()) {      
                             System.out.println(outIndexTileError); // if no integer, then give error message and ask again - YBB
                             System.out.print(tileDiscardText);
-                            sc.nextLine();                            
+                            sc.nextLine(); 
                         }
                         playerChoice = sc.nextInt();
 
@@ -114,7 +113,7 @@ public class ApplicationMain {
                         
                     } while (playerChoice < 0 || playerChoice > 14); // also handles the range of the index is correct - YBB
 
-                    // make sure the given index is correct, should be 0 <= index <= 14
+                    // make sure the given index is correct, should be 0 <= index <= 14 | Done - YBB
                     
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();
