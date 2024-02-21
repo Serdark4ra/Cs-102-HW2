@@ -161,7 +161,7 @@ public class ApplicationMain {
                         // Serdar Kara
                         Player[] winners = game.getPlayerWithHighestLongestChain();
                         if (winners.length == 1 ) {
-                            System.out.println("Winner is : ");
+                            System.out.print("Winner is : ");
                         }else{
                             System.out.print("Winners are : ");
                         }
