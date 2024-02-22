@@ -20,7 +20,7 @@ public class Player {
      */
     //MAY
     public boolean checkWinning() {
-        boolean isWinning;
+        /*boolean isWinning;
         //Count how many tile disturbs the chain. It shouldn't be more than 1.
         int disturbance = 0;
 
@@ -47,6 +47,27 @@ public class Player {
             isWinning = true;
         }
 
+        return isWinning;*/
+        boolean isWinning = true; // Assume winning unless proven otherwise
+        int disturbance = 0;
+    
+        // Iterate through the tiles
+        for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
+            // Check if the current tile can form a chain with the previous tile
+            if (!this.playerTiles[i].canFormChainWith(this.playerTiles[i - 1])) {
+                disturbance++;
+                // Check if the disturbance is due to a gap of more than 1 between tiles
+                if (i + 1 < this.numberOfTiles && this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() != 1) {
+                    disturbance = 2; // More than one gap, set disturbance to 2 to indicate failure
+                }
+            }
+        }
+    
+        // Check if the player has 14 consecutive tiles with at most one disturbance
+        if (disturbance != 1 || this.numberOfTiles != 14) {
+            isWinning = false;
+        }
+    
         return isWinning;
     }
     
