@@ -286,17 +286,23 @@ public class SimplifiedOkeyGame {
 
             for ( int i = 0; i < chains.length; i++ )
             {
-                if ( chains[i].length < chains[indexOfShortestChain].length )
+                if ( chains[i].length < chains[indexOfLargestChain].length )
                 {
-                    indexOfShortestChain = i;
+                    indexOfLargestChain = i;
                 }
             }
 
             for ( int i = 0; i < chains.length; i++ )
-            {
-                if ( chains[i].length < chains[indexOfLargestChain].length )
+            {   if ( chains[i].length == chains[indexOfShortestChain].length )
                 {
-                    indexOfLargestChain = i;
+                    if ( Math.abs(indexOfLargestChain - indexOfShortestChain) <= Math.abs(indexOfLargestChain - i) )
+                    {
+                        indexOfShortestChain = i;
+                    } 
+                }
+                else if ( chains[i].length < chains[indexOfShortestChain].length )
+                {
+                    indexOfShortestChain = i;
                 }
             }
 

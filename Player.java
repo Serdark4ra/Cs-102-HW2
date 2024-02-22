@@ -179,7 +179,7 @@ public class Player {
             if ( !this.playerTiles[i].canFormChainWith(this.playerTiles[i + 1]) )
             {
                 //Shrink the chain and adjust variables.
-                chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex + 1);
+                chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex);
                 chainIndex = chainIndex + 1;
                 tileIndex = 0;
             }
@@ -187,6 +187,8 @@ public class Player {
             chains[chainIndex][tileIndex] = this.playerTiles[i + 1];
             tileIndex = tileIndex + 1;
         }
+
+        chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex);
 
         //Shrink the complete array and return.
         chains = Arrays.copyOf(chains, chainIndex + 1);
