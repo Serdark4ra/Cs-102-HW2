@@ -60,7 +60,7 @@ public class Player {
 
     //YBB
     public int findLongestChain() {
-        int longestChain = 0;
+        /*int longestChain = 0;
         int longChain = 1;
         // boolean isChain = false; unnecesarry
 
@@ -77,7 +77,29 @@ public class Player {
             }
         }
 
+        return longestChain;*/
+        int longestChain = 0;
+        int longChain = 1;
+    
+        // Iterate until the second last tile
+        for (int index = 0; index < this.numberOfTiles - 1; index++) {
+            if (playerTiles[index].canFormChainWith(playerTiles[index + 1])) {
+                longChain++;
+            } else {
+                if (longChain > longestChain) {
+                    longestChain = longChain; // Update the longest chain's length
+                }
+                longChain = 1;
+            }
+        }
+    
+        // Check the last tile separately
+        if (longChain > longestChain) {
+            longestChain = longChain;
+        }
+    
         return longestChain;
+    
     }
 
     /**
