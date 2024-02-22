@@ -49,26 +49,28 @@ public class Player {
 
         return isWinning;*/
         boolean isWinning = true; // Assume winning unless proven otherwise
-        int disturbance = 0;
-    
-        // Iterate through the tiles
-        for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
-            // Check if the current tile can form a chain with the previous tile
-            if (!this.playerTiles[i].canFormChainWith(this.playerTiles[i - 1])) {
-                disturbance++;
-                // Check if the disturbance is due to a gap of more than 1 between tiles
-                if (i + 1 < this.numberOfTiles && this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() != 1) {
-                    disturbance = 2; // More than one gap, set disturbance to 2 to indicate failure
-                }
+    int consecutiveCount = 1; // Initialize consecutive count to 1
+    int disturbance = 0;
+
+    // Iterate through the tiles
+    for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
+        // Check if the current tile can form a chain with the previous tile
+        if (this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() == 1) {
+            consecutiveCount++; // Increment consecutive count if tiles are consecutive
+        } else {
+            disturbance++; // Increment disturbance if tiles are not consecutive
+            if (disturbance == 2) {
+                isWinning = false; // If more than one disturbance, set isWinning to false
             }
         }
-    
-        // Check if the player has 14 consecutive tiles with at most one disturbance
-        if (disturbance != 1 || this.numberOfTiles != 14) {
-            isWinning = false;
-        }
-    
-        return isWinning;
+    }
+
+    // Check if the player has exactly 14 consecutive tiles
+    if (consecutiveCount != 14 || this.numberOfTiles != 14) {
+        isWinning = false;
+    }
+
+    return isWinning;
     }
     
 
