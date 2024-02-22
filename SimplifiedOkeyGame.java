@@ -177,7 +177,7 @@ public class SimplifiedOkeyGame {
                 winnerList.add(players[i]);
                 winnersLength++;
                 longestChain = players[i].findLongestChain();
-            } else if (players[i].findLongestChain() > longestChain) {
+            } else if (players[i].findLongestChain() == longestChain) {
                 winnerList.add(players[i]);
                 winnersLength++;
             }
