@@ -257,6 +257,7 @@ public class SimplifiedOkeyGame {
      */
     //-MAY
     public void discardTileForComputer() {
+        System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
         int theIndex = 0;
@@ -286,7 +287,7 @@ public class SimplifiedOkeyGame {
 
             for ( int i = 0; i < chains.length; i++ )
             {
-                if ( chains[i].length < chains[indexOfLargestChain].length )
+                if ( chains[i].length > chains[indexOfLargestChain].length )
                 {
                     indexOfLargestChain = i;
                 }
@@ -335,7 +336,7 @@ public class SimplifiedOkeyGame {
                     i = i + 1;
                 }
 
-                lastIndexOfShortest = firstIndexOfShortest + chains[indexOfShortestChain].length;
+                lastIndexOfShortest = firstIndexOfShortest + chains[indexOfShortestChain].length - 1;
 
                 //If the smallest chain has neigbourhood with the longest in one side, discard from the other side.
                 if ( Math.abs(indexOfShortestChain - indexOfLargestChain) == 1 )
@@ -405,7 +406,7 @@ public class SimplifiedOkeyGame {
 
         if ( theIndex <= 14 || theIndex >= 0)
         {
-            System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
+
             this.discardTile(theIndex);
             System.out.println("After discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
         }

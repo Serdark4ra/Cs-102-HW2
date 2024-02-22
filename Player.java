@@ -31,6 +31,10 @@ public class Player {
             if ( !this.playerTiles[i].canFormChainWith( this.playerTiles[i-1]) )
             {
                 disturbance = disturbance + 1;
+                if ( i + 1 != this.numberOfTiles && (this.playerTiles[i].getValue() - this.playerTiles[i-1].getValue()) != 0)
+                {
+                    disturbance = 2;
+                }
             }
         }
 
