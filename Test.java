@@ -60,6 +60,26 @@ public class Test {
         System.out.println("End of test for Tile");
         System.out.println();
 
+
+        // Test for checkWinning
+
+        Player A = new Player("Ahmet");
+        Player B = new Player("Banu");
+        Player C = new Player("Ceylin");
+        Player D = new Player("Dilan"); 
+
+        // Test for findLongestChain
+
+        // Test for getAndRemoveTile
+
+        // Test for addTile
+
+        // Test for findPositionOfTile
+
+        // Test for displayTiles
+
+        // Test for seperateChains
+
         
 
     }
