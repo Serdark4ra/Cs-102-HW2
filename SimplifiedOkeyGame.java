@@ -122,6 +122,7 @@ public class SimplifiedOkeyGame {
         }
     }
 
+    
     public void shuffleTiles2() {
         
         for (int i = 0; i < 100; i++) {
@@ -227,8 +228,13 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     //-MAY
-    public void discardTileForComputer() {
-        System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
+    public void discardTileForComputer(boolean devModeOn) {
+        
+        if (devModeOn)
+        {
+            System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
+        }
+
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].getNumberOfTiles();
         int theIndex = 0;
@@ -379,7 +385,11 @@ public class SimplifiedOkeyGame {
         {
 
             this.discardTile(theIndex);
-            System.out.println("After discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
+
+            if (devModeOn)
+            {
+                System.out.println("After discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
+            }
         }
         else
         {

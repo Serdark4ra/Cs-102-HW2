@@ -37,13 +37,7 @@ public class ApplicationMain {
 
                 game.displayCurrentPlayersTiles();
                 game.displayDiscardInformation();
-                
-                //-----buranın altı silinecek sadece hatayı çözmek için ekledim
-                /*  game.displayAllTilesInHands();
-                    System.out.println("----------");
-                    game.ortadakiKartlariGöster(); */
-                //------buranın üstü silinecek
-
+              
                 System.out.println("What will you do?");
 
                 if(!firstTurn) {
@@ -152,7 +146,7 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game did not end computer should discard
-                    game.discardTileForComputer();
+                    game.discardTileForComputer(devModeOn);
                     game.passTurnToNextPlayer();
                 }
                 else{
