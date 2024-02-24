@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ApplicationMain {
@@ -146,7 +147,13 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game did not end computer should discard
-                    game.discardTileForComputer(devModeOn);
+                    if(devModeOn) {
+                        System.out.println("before discarding: " + game.getTileValues());  
+                    }
+                    game.discardTileForComputer();
+                    if(devModeOn) {
+                        System.out.println("before discarding: " + game.getTileValues());
+                    }
                     game.passTurnToNextPlayer();
                 }
                 else{

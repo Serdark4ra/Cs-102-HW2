@@ -228,17 +228,12 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     //-MAY
-    public void discardTileForComputer(boolean devModeOn) {
-        
-        if (devModeOn)
-        {
-            System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
-        }
-
+    public void discardTileForComputer() {
+       
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].getNumberOfTiles();
         int theIndex = 0;
-        
+       
         //Trying to find duplicated element first
         
         //Trying to find duplicated element first
@@ -383,13 +378,7 @@ public class SimplifiedOkeyGame {
 
         if ( theIndex <= 14 || theIndex >= 0)
         {
-
             this.discardTile(theIndex);
-
-            if (devModeOn)
-            {
-                System.out.println("After discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
-            }
         }
         else
         {
@@ -454,5 +443,13 @@ public class SimplifiedOkeyGame {
     public Player[] getPlayers(){
         return players;
     }
-
+    
+    /**
+     * 
+     * @return all values of all tiles in the current player's hand.
+     */
+    public String getTileValues()
+    {
+        return Arrays.toString(players[currentPlayerIndex].getTiles());
+    }
 }
