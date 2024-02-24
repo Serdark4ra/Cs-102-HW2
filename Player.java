@@ -55,14 +55,13 @@ public class Player {
             
             if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
                 lenghtOfChain++;
-            }else if (playerTiles[index].getValue() == playerTiles[index - 1].getValue()) {
-                continue;
-            }
-             else {
-                if (lenghtOfChain > longestChain) {
-                    longestChain = lenghtOfChain; // Update the longest chain's length
+            }else{
+                if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
+                    if (lenghtOfChain > longestChain) {
+                        longestChain = lenghtOfChain; // Update the longest chain's length
+                    }
+                    lenghtOfChain = 1;
                 }
-                lenghtOfChain = 1;
             }
         }
     
