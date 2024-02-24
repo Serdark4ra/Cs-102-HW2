@@ -165,13 +165,17 @@ public class ApplicationMain {
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
+                        for (int i = 0; i < game.getPlayers().length; i++){
+                            System.out.println(game.getPlayers()[i].getName() + "'s longest chain is: ");
+                            game.getPlayers()[i].displayLongestChain();
+                            System.out.println();
+                        }
                         Player[] winners = game.getPlayerWithHighestLongestChain();
                         if (winners.length == 1 ) {
                             System.out.print("Winner is : ");
                         }else{
                             System.out.print("Winners are : ");
                         }
-                        
                         for (int i = 0; i < winners.length; i++) {
                             System.out.print(winners[i].getName() + " ");
                         }

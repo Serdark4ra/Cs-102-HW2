@@ -427,5 +427,8 @@ public class SimplifiedOkeyGame {
             System.out.print(" " + tiles[i]);
         }
     }
+    public Player[] getPlayers(){
+        return players;
+    }
 
 }

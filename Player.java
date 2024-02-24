@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Player {
@@ -72,6 +73,37 @@ public class Player {
     
         return longestChain;
     
+    }
+    public void displayLongestChain(){
+        for (int i = 0; i < getLongestChain().size(); i++) {
+            System.out.print(getLongestChain().get(i) + " ");
+        }
+    }
+    public ArrayList<Integer> getLongestChain(){
+        ArrayList<Integer> longestChain = new ArrayList<>();
+        ArrayList<Integer> currentChain = new ArrayList<>();
+
+        for (int index = 1; index < this.numberOfTiles; index++) {
+            
+            if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
+                currentChain.add((playerTiles[index - 1].getValue()));
+            }else{
+                if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
+                    if (currentChain.size() > longestChain.size()) {
+                        longestChain = new ArrayList<>(currentChain); // Update the longest chain's length
+                    }
+                    currentChain = new ArrayList<>();
+                }
+            }
+        }
+    
+        // Check the last tile separately
+        if (currentChain.size() > longestChain.size()) {
+            longestChain = new ArrayList<>(currentChain);
+        }
+    
+        return longestChain;
+
     }
 
     /**
