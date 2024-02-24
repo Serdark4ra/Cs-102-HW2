@@ -11,14 +11,11 @@ public class Player {
         numberOfTiles = 0; // currently this player owns 0 tiles, will pick tiles at the beggining of the game
     }
 
-    /*
-     *  checks this player's hand to determine if this player is winning 
+    /**
+     * checks this player's hand to determine if this player is winning 
      * the player with a complete chain of 14 consecutive numbers wins the game
-     * note that the player whose turn is now draws one extra tile to have 15 tiles in hand,
-     * and the extra tile does not disturb the longest chain and therefore the winning condition
-     * check the assigment text for more details on winning condition
+     * @return true if the player wins, otherwise false.
      */
-    //MAY
     public boolean checkWinning() {
         /*boolean isWinning;
         //Count how many tile disturbs the chain. It shouldn't be more than 1.
@@ -49,39 +46,34 @@ public class Player {
 
         return isWinning;*/
         boolean isWinning = true; // Assume winning unless proven otherwise
-    int consecutiveCount = 1; // Initialize consecutive count to 1
-    int disturbance = 0;
+        int consecutiveCount = 1; // Initialize consecutive count to 1
+        int disturbance = 0;
 
-    // Iterate through the tiles
-    for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
-        // Check if the current tile can form a chain with the previous tile
-        if (this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() == 1) {
-            consecutiveCount++; // Increment consecutive count if tiles are consecutive
-        } else {
-            disturbance++; // Increment disturbance if tiles are not consecutive
-            if (disturbance == 2) {
-                isWinning = false; // If more than one disturbance, set isWinning to false
+        // Iterate through the tiles
+        for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
+            // Check if the current tile can form a chain with the previous tile
+            if (this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() == 1) {
+                consecutiveCount++; // Increment consecutive count if tiles are consecutive
+            } else {
+                disturbance++; // Increment disturbance if tiles are not consecutive
+                if (disturbance == 2) {
+                    isWinning = false; // If more than one disturbance, set isWinning to false
+                }
             }
         }
-    }
 
-    // Check if the player has exactly 14 consecutive tiles
-    if (consecutiveCount != 14 || this.numberOfTiles != 14) {
-        isWinning = false;
-    }
+        // Check if the player has exactly 14 consecutive tiles
+        if (consecutiveCount != 14 || this.numberOfTiles != 14) {
+            isWinning = false;
+        }
 
-    return isWinning;
+        return isWinning;
     }
     
-
-    /*
-     * used for finding the longest chain in this player hand
-     * this method should iterate over playerTiles to find the longest chain
-     * of consecutive numbers, used for checking the winning condition
-     * and also for determining the winner if tile stack has no tiles
+    /**
+     * finds the longest chain in the player's hand.
+     * @return the size of longest chain
      */
-
-    //YBB
     public int findLongestChain() {
         /*int longestChain = 0;
         int longChain = 1;
@@ -144,14 +136,10 @@ public class Player {
         return targetTile; // return desired tile 
     }
 
-    /*
-     * adds the given tile to this player's hand keeping the ascending order
-     * this requires you to loop over the existing tiles to find the correct position,
-     * then shift the remaining tiles to the right by one
+    /**
+     * adds the given tile to this player's hand.
+     * @param t Tile which will be added to player's hand.
      */
-
-    //YBB
-    // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
         boolean isPlaceFound = false;
         int suitablePlace = this.numberOfTiles;
@@ -171,9 +159,11 @@ public class Player {
         this.numberOfTiles ++;
     }
 
-    /*
-     * finds the index for a given tile in this player's hand
-     */
+     /**
+      * finds the index for a given tile in this player's hand
+      * @param t Tile to be searched in the player's hand
+      * @return the index of the tile.
+      */
     public int findPositionOfTile(Tile t) {
         int tilePosition = -1;
         for (int i = 0; i < numberOfTiles; i++) {
@@ -184,8 +174,8 @@ public class Player {
         return tilePosition;
     }
 
-    /*
-     * displays the tiles of this player
+    /**
+     * displays the tiles of the player
      */
     public void displayTiles() {
         System.out.println(playerName + "'s Tiles:");
@@ -233,16 +223,27 @@ public class Player {
         return chains;
     }
 
+    /**
+     * adds the given tile to player's hand.
+     * @param t Tile that will be added to player's hand.
+     */
     public void addTiles(Tile t)
     {
         this.playerTiles[14] = t;
     }
 
+    /**
+     * removes the last tile of the player.
+     */
     public void removeLastTile()
     {
         this.playerTiles[playerTiles.length - 1] = null;
     }
 
+    /**
+     * 
+     * @return the tile of the player.
+     */
     public Tile[] getTiles() {
         return playerTiles;
     }
