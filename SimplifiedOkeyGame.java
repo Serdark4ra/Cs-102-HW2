@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class SimplifiedOkeyGame {
 
-    Player[] players;
-    Tile[] tiles;
-    int tileCount;
+    private Player[] players;
+    private Tile[] tiles;
+    private int tileCount;
 
     Random rnd = new Random();
     Tile lastDiscardedTile;

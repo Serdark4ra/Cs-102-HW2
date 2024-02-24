@@ -133,7 +133,6 @@ public class ApplicationMain {
                         System.out.print("Winners are : ");
                         for (int i = 0; i < winners.length; i++) {
                             System.out.print(winners[i].getName() + " ");
-                            System.out.println(winners[i].findLongestChain());
                         }
 
 

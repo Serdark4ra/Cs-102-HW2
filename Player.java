@@ -17,34 +17,6 @@ public class Player {
      * @return true if the player wins, otherwise false.
      */
     public boolean checkWinning() {
-        /*boolean isWinning;
-        //Count how many tile disturbs the chain. It shouldn't be more than 1.
-        int disturbance = 0;
-
-        //i starts from one because if statement checks also the previous element
-        for ( int i = 1; i < this.numberOfTiles && disturbance < 2; i++ )
-        {
-            //Checks the current tile with the previous tile.
-            if ( !this.playerTiles[i].canFormChainWith( this.playerTiles[i-1]) )
-            {
-                disturbance = disturbance + 1;
-                if ( i + 1 != this.numberOfTiles && (this.playerTiles[i].getValue() - this.playerTiles[i-1].getValue()) != 0)
-                {
-                    disturbance = 2;
-                }
-            }
-        }
-
-        if ( disturbance == 2 )
-        {
-            isWinning = false;
-        }
-        else
-        {
-            isWinning = true;
-        }
-
-        return isWinning;*/
         boolean isWinning = true; // Assume winning unless proven otherwise
         int consecutiveCount = 1; // Initialize consecutive count to 1
         int disturbance = 0;
