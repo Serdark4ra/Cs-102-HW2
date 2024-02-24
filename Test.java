@@ -60,6 +60,23 @@ public class Test {
         System.out.println("End of test for Tile");
         System.out.println();
 
+        Player p1 = new Player("ALTAN");
+        p1.addTile(new Tile(3));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(5));
+        p1.addTile(new Tile(6));
+        p1.addTile(new Tile(7));
+        p1.addTile(new Tile(8));
+        p1.addTile(new Tile(9));
+        p1.addTile(new Tile(15));
+        p1.addTile(new Tile(16));
+        p1.addTile(new Tile(17));
+        p1.addTile(new Tile(18));
+        p1.addTile(new Tile(22));
+        System.out.println("-----------------------");
+        System.out.println(p1.findLongestChain());
 
         // Test for checkWinning
 
