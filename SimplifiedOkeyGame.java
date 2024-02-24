@@ -128,6 +128,8 @@ public class SimplifiedOkeyGame {
         boolean isGameFinished = false;
         if (players[currentPlayerIndex].checkWinning() == true) {
             isGameFinished = true;
+        }else if (this.tileCount == 0) {
+            isGameFinished = true;
         }
         return isGameFinished;
 
