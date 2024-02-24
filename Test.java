@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Random;
+
 public class Test {
     public static void main(String[] args) {
         
@@ -60,6 +63,23 @@ public class Test {
         System.out.println("End of test for Tile");
         System.out.println();
 
+        Player p1 = new Player("ALTAN");
+        p1.addTile(new Tile(3));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(4));
+        p1.addTile(new Tile(5));
+        p1.addTile(new Tile(6));
+        p1.addTile(new Tile(7));
+        p1.addTile(new Tile(8));
+        p1.addTile(new Tile(9));
+        p1.addTile(new Tile(15));
+        p1.addTile(new Tile(16));
+        p1.addTile(new Tile(17));
+        p1.addTile(new Tile(18));
+        p1.addTile(new Tile(22));
+        System.out.println("-----------------------");
+        System.out.println(p1.findLongestChain());
 
         // Test for checkWinning
 
@@ -81,6 +101,33 @@ public class Test {
         // Test for seperateChains
 
         
+        Tile[] tiles;
+        tiles = new Tile[104];
+        int currentTile = 0;
 
+        // four copies of each value, no jokers
+        for (int i = 1; i <= 26; i++) {
+            for (int j = 0; j < 4; j++) {
+                tiles[currentTile++] = new Tile(i);
+            }
+        }
+
+        Random rnd = new Random();
+        
+        
+        for (int i = 0; i < 200; i++)
+        {
+            int r1 = rnd.nextInt(tiles.length);
+            int r2 = rnd.nextInt(tiles.length);
+
+        Tile tempTile = new Tile(tiles[r1].getValue());
+        tiles [r1] = tiles [r2];
+        tiles [r2] = tempTile;
+        }
+
+        System.out.println(Arrays.toString(tiles));
+    
+        
     }
+    
 }

@@ -91,7 +91,7 @@ public class SimplifiedOkeyGame {
      */
     // Oğuzhan Demir
     public String getTopTile() {
-        // Check if there are still tiles in the stack
+        // Checks if there are still tiles in the stack
         if (tileCount > 0) {
             Tile topTile = tiles[--tileCount];
             // Get the top tile
@@ -109,7 +109,21 @@ public class SimplifiedOkeyGame {
     /*
      * should randomly shuffle the tiles array before game starts
      */
-    public void shuffleTiles() {
+    public void shuffleTiles()
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            int r1 = rnd.nextInt(tiles.length);
+        int r2 = rnd.nextInt(tiles.length);
+
+        Tile tempTile = new Tile(tiles[r1].getValue());
+        tiles [r1] = tiles [r2];
+        tiles [r2] = tempTile;
+        }
+    }
+
+    public void shuffleTiles2() {
+        
         for (int i = 0; i < 100; i++) {
             int r1 = rnd.nextInt(tiles.length);
             int r2 = rnd.nextInt(tiles.length);
