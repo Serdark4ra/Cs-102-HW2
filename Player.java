@@ -1,9 +1,9 @@
 import java.util.Arrays;
 
 public class Player {
-    String playerName;
-    Tile[] playerTiles;
-    int numberOfTiles;
+    private String playerName;
+    private Tile[] playerTiles;
+    private int numberOfTiles;
 
     public Player(String name) {
         setName(name);
@@ -153,17 +153,6 @@ public class Player {
     //YBB
     // Updated by Serdar to avoid compare method error
     public void addTile(Tile t) {
-        
-        /*for (int i = 0; i < playerTiles.length; i++) {
-            if ( this.playerTiles[i].compareTo(t) == 0 || this.playerTiles[i].compareTo(t) == -1 ){
-                for (int j = 14; j > i; j--){ // this shifts the remaining tiles one to the right
-                    playerTiles[j+1] = playerTiles[j];
-                }
-                playerTiles[i] = t; 
-            }
-            
-        }*/
-
         boolean isPlaceFound = false;
         int suitablePlace = this.numberOfTiles;
 
@@ -242,24 +231,6 @@ public class Player {
         //Shrink the complete array and return.
         chains = Arrays.copyOf(chains, chainIndex + 1);
         return chains;
-
-
-        //I THINK IT IS NOT A GOOD APPROACH, IT IS VERY BUGGY. -Akif
-        /*
-        while ( tileIndex <= this.numberOfTiles )
-        {
-            do 
-            {
-                chains[chainIndex][tileIndex] = this.playerTiles[tileIndex];
-                tileIndex = tileIndex + 1;
-            }while ( this.playerTiles[tileIndex].canFormChainWith(this.playerTiles[tileIndex - 1]) );
-
-            chains[chainIndex] = Arrays.copyOf(chains[chainIndex], tileIndex + 1);
-            tileIndex = 0;
-            chainIndex = chainIndex + 1;
-        } */
-
-
     }
 
     public void addTiles(Tile t)
@@ -282,5 +253,8 @@ public class Player {
 
     public String getName() {
         return playerName;
+    }
+    public int getNumberOfTiles(){
+        return numberOfTiles;
     }
 }

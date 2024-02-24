@@ -56,27 +56,6 @@ public class SimplifiedOkeyGame {
                 tileCount--;
             }
         }
-        
-       
-        
-        
-        /*int distributionStartPoint = 0;
-        int tileNum;
-        for (int i = 0; i < players.length; i++) {
-
-            Player currentPlayer = players[i];
-            if (i == 0) {
-                tileNum = 15;
-            } else {
-                tileNum = 14;
-            }
-            for (int j = distributionStartPoint; j < distributionStartPoint + tileNum; j++) {
-                currentPlayer.addTile(tiles[j]);
-            }
-            distributionStartPoint = distributionStartPoint + tileNum;
-        }
-        tileCount = 47;*/
-
     }
 
     /*
@@ -128,7 +107,7 @@ public class SimplifiedOkeyGame {
     }
 
     /*
-     * TODO: should randomly shuffle the tiles array before game starts
+     * should randomly shuffle the tiles array before game starts
      */
     public void shuffleTiles() {
         for (int i = 0; i < 100; i++) {
@@ -142,7 +121,6 @@ public class SimplifiedOkeyGame {
     }
 
     /*
-     * TODO: check if game still continues, should return true if current player
      * finished the game. use checkWinning method of the player class to determine
      */
     public boolean didGameFinish() {
@@ -208,32 +186,12 @@ public class SimplifiedOkeyGame {
     }
 
     /*
-     * TODO: pick a tile for the current computer player using one of the following:
      * - picking from the tiles array using getTopTile()
      * - picking from the lastDiscardedTile using getLastDiscardedTile()
      * you should check if getting the discarded tile is useful for the computer
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
-        /*
-         * int currentChainLength = players[currentPlayerIndex].findLongestChain();
-         * int possibleChainLength;
-         * 
-         * players[currentPlayerIndex].addTile(addTopTile());
-         * possibleChainLength = players[currentPlayerIndex].findLongestChain();
-         * 
-         * players[currentPlayerIndex].removeLastTile();
-         * 
-         * if (possibleChainLength <= currentChainLength)
-         * {
-         * getTopTile();
-         * }
-         * else
-         * {
-         * // o zaman atılan taşı alacak ama nasıl?
-         * players[currentPlayerIndex].addTile(lastDiscardedTile);
-         * }
-         */
         Player currentPlayer = players[currentPlayerIndex];
         int currentChainLength = players[currentPlayerIndex].findLongestChain();
         currentPlayer.addTile(lastDiscardedTile);
@@ -259,7 +217,7 @@ public class SimplifiedOkeyGame {
     public void discardTileForComputer() {
         System.out.println("Before discarding: " + Arrays.toString(this.players[currentPlayerIndex].getTiles()) );
         boolean isDone = false;
-        int numberOfTiles = players[currentPlayerIndex].numberOfTiles;
+        int numberOfTiles = players[currentPlayerIndex].getNumberOfTiles();
         int theIndex = 0;
         
         //Trying to find duplicated element first
@@ -267,7 +225,7 @@ public class SimplifiedOkeyGame {
         //Trying to find duplicated element first
         for ( int i = 0; i < numberOfTiles - 1  && !isDone; i++ )
         {
-            if ( 0 == players[currentPlayerIndex].playerTiles[i].compareTo(players[currentPlayerIndex].playerTiles[i + 1]) )
+            if ( 0 == players[currentPlayerIndex].getTiles()[i].compareTo(players[currentPlayerIndex].getTiles()[i + 1]) )
             {
                 //this.players[currentPlayerIndex].getAndRemoveTile(i);
                 theIndex = i;
