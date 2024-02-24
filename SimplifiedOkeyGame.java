@@ -125,16 +125,13 @@ public class SimplifiedOkeyGame {
      */
     public boolean didGameFinish() {
 
-        boolean isAnyoneWins = false;
-
-        // For each loop is used in order to visit every player and check whether they
-        // finished or not.
-        for (Player player : players) {
-            if (player.checkWinning()) {
-                isAnyoneWins = true;
-            }
+        boolean isGameFinished = false;
+        if (players[currentPlayerIndex].checkWinning() == true) {
+            isGameFinished = true;
         }
-        return isAnyoneWins;
+        return isGameFinished;
+
+        
     }
 
     /*

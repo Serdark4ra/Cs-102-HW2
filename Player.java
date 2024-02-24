@@ -83,42 +83,28 @@ public class Player {
 
     //YBB
     public int findLongestChain() {
-        /*int longestChain = 0;
-        int longChain = 1;
-        // boolean isChain = false; unnecesarry
-
-        for (int index = 0; index < this.numberOfTiles - 1; index++) {
-            //You can use canFormChainWith() method. -Akif | thx -YBB
-            if ( playerTiles[index].canFormChainWith(playerTiles[index + 1])){
-                longChain ++;
-            }
-            else {
-                if (longChain > longestChain){
-                    longestChain = longChain; //update the longest chains lenght         
-                }
-                longChain = 1;
-            }
-        }
-
-        return longestChain;*/
         int longestChain = 0;
-        int longChain = 1;
+        int lenghtOfChain = 1;
     
-        // Iterate until the second last tile
-        for (int index = 0; index < this.numberOfTiles - 1; index++) {
-            if (playerTiles[index].canFormChainWith(playerTiles[index + 1])) {
-                longChain++;
-            } else {
-                if (longChain > longestChain) {
-                    longestChain = longChain; // Update the longest chain's length
+        // until the second last tile
+        for (int index = 1; index < this.numberOfTiles; index++) {
+            
+            if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
+                lenghtOfChain++;
+            }else if (playerTiles[index].getValue() == playerTiles[index - 1].getValue()) {
+                continue;
+            }
+             else {
+                if (lenghtOfChain > longestChain) {
+                    longestChain = lenghtOfChain; // Update the longest chain's length
                 }
-                longChain = 1;
+                lenghtOfChain = 1;
             }
         }
     
         // Check the last tile separately
-        if (longChain > longestChain) {
-            longestChain = longChain;
+        if (lenghtOfChain > longestChain) {
+            longestChain = lenghtOfChain;
         }
     
         return longestChain;

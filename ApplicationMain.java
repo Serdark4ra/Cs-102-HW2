@@ -133,6 +133,7 @@ public class ApplicationMain {
                         System.out.print("Winners are : ");
                         for (int i = 0; i < winners.length; i++) {
                             System.out.print(winners[i].getName() + " ");
+                            System.out.println(winners[i].findLongestChain());
                         }
 
 
@@ -156,7 +157,7 @@ public class ApplicationMain {
                     game.passTurnToNextPlayer();
                 }
                 else{
-                    if(game.didGameFinish()) { // ! is removed to solve wrong player wins error 
+                    if(!game.didGameFinish()) { 
                         // current computer character wins
                         System.out.println(game.getCurrentPlayerName() + " wins.");
                     }
