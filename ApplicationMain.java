@@ -160,7 +160,7 @@ public class ApplicationMain {
                     }
                     game.discardTileForComputer();
                     if(devModeOn) {
-                        System.out.println("before discarding: " + game.getTileValues());
+                        System.out.println("after discarding: " + game.getTileValues());
                     }
                     game.passTurnToNextPlayer();
                 }
