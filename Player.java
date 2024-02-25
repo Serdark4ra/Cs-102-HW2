@@ -74,24 +74,26 @@ public class Player {
             System.out.print(getLongestChain().get(i) + " ");
         }
     }
-    public ArrayList<Integer> getLongestChain(){
+    public ArrayList<Integer> getLongestChain() {
         ArrayList<Integer> longestChain = new ArrayList<>();
         ArrayList<Integer> currentChain = new ArrayList<>();
     
-        // İlk elemanı mevcut zincire ekleyin
         if (this.numberOfTiles > 0) {
             currentChain.add(playerTiles[0].getValue());
         }
     
         for (int index = 1; index < this.numberOfTiles; index++) {
             if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
+                if (!currentChain.contains(playerTiles[index - 1].getValue())) {
+                    currentChain.add(playerTiles[index - 1].getValue());
+                }
                 currentChain.add(playerTiles[index].getValue());
             } else {
 
                 if (currentChain.size() > longestChain.size()) {
-                    longestChain = new ArrayList<>(currentChain); 
+                    longestChain = new ArrayList<>(currentChain);
                 }
-                currentChain = new ArrayList<>();
+                currentChain.clear(); 
                 currentChain.add(playerTiles[index].getValue()); 
             }
         }
@@ -103,6 +105,7 @@ public class Player {
     
         return longestChain;
     }
+    
     
 
     /**

@@ -121,13 +121,12 @@ public class ApplicationMain {
                     }
                     else{
                         for (int i = 0; i < game.getPlayers().length; i++){
-                            System.out.println(game.getPlayers()[i].getName() + "'s longest chain is: ");
+                            System.out.print(game.getPlayers()[i].getName() + "'s longest chain is: ");
                             game.getPlayers()[i].displayLongestChain();
+                            System.out.print(" -> " + game.getPlayers()[i].findLongestChain());
                             System.out.println();
                         }
-                        for (Player player : game.getPlayers()) {
-                            System.out.println(player.getName() + player.findLongestChain());
-                        }
+                        
                         // the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
@@ -175,8 +174,9 @@ public class ApplicationMain {
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
                         for (int i = 0; i < game.getPlayers().length; i++){
-                            System.out.println(game.getPlayers()[i].getName() + "'s longest chain is: ");
+                            System.out.print(game.getPlayers()[i].getName() + "'s longest chain is: ");
                             game.getPlayers()[i].displayLongestChain();
+                            System.out.print(" -> " + game.getPlayers()[i].findLongestChain());
                             System.out.println();
                         }
                         for (Player player : game.getPlayers()) {
