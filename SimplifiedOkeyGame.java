@@ -32,7 +32,7 @@ public class SimplifiedOkeyGame {
     }
 
     /**
-     * en üstteki karttan başlayarak oyunculara kartları dağıtır.
+     * Distributes Tiles to players starting from the top Tile
      */
     public void distributeTilesToPlayers() {
         
@@ -114,11 +114,11 @@ public class SimplifiedOkeyGame {
         for (int i = 0; i < 200; i++)
         {
             int r1 = rnd.nextInt(tiles.length);
-        int r2 = rnd.nextInt(tiles.length);
-
-        Tile tempTile = new Tile(tiles[r1].getValue());
-        tiles [r1] = tiles [r2];
-        tiles [r2] = tempTile;
+            int r2 = rnd.nextInt(tiles.length);
+            
+            Tile tempTile = new Tile(tiles[r1].getValue());
+            tiles [r1] = tiles [r2];
+            tiles [r2] = tempTile;
         }
     }
 
@@ -233,9 +233,7 @@ public class SimplifiedOkeyGame {
         boolean isDone = false;
         int numberOfTiles = players[currentPlayerIndex].getNumberOfTiles();
         int theIndex = 0;
-       
-        //Trying to find duplicated element first
-        
+               
         //Trying to find duplicated element first
         for ( int i = 0; i < numberOfTiles - 1  && !isDone; i++ )
         {
