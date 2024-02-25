@@ -49,31 +49,25 @@ public class Player {
      * @return the size of longest chain
      */
     public int findLongestChain() {
-        int longestChain = 0;
-        int lenghtOfChain = 1;
-    
-        // until the second last tile
-        for (int index = 1; index < this.numberOfTiles; index++) {
-            
-            if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
-                lenghtOfChain++;
-            }else{
-                if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
-                    if (lenghtOfChain > longestChain) {
-                        longestChain = lenghtOfChain; // Update the longest chain's length
-                    }
-                    lenghtOfChain = 1;
+        int longestOne = 0;
+        int lengthOfChain = 1;
+
+        for (int i = 0; i < this.numberOfTiles - 1; i++)
+        {
+            if (this.playerTiles[i + 1].getValue() - (this.playerTiles[i]).getValue() == 1){
+                lengthOfChain++;
+                if (lengthOfChain >= longestOne){
+                    longestOne = lengthOfChain;
                 }
             }
+            else if(this.playerTiles[i + 1].getValue() == (this.playerTiles[i]).getValue())
+            {
+            }
+            else{
+                lengthOfChain = 1;
+            }
         }
-    
-        // Check the last tile separately
-        if (lenghtOfChain > longestChain) {
-            longestChain = lenghtOfChain;
-        }
-    
-        return longestChain;
-    
+        return longestOne;
     }
     public void displayLongestChain(){
         for (int i = 0; i < getLongestChain().size(); i++) {
