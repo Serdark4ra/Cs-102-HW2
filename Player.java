@@ -19,28 +19,10 @@ public class Player {
      */
     public boolean checkWinning() {
         
-        boolean isWinning = true; // Assume winning unless proven otherwise
-        int consecutiveCount = 1; // Initialize consecutive count to 1
-        int disturbance = 0;
-
-        // Iterate through the tiles
-        for (int i = 1; i < this.numberOfTiles && disturbance < 2; i++) {
-            // Check if the current tile can form a chain with the previous tile
-            if (this.playerTiles[i].getValue() - this.playerTiles[i - 1].getValue() == 1) {
-                consecutiveCount++; // Increment consecutive count if tiles are consecutive
-            } else {
-                disturbance++; // Increment disturbance if tiles are not consecutive
-                if (disturbance == 2) {
-                    isWinning = false; // If more than one disturbance, set isWinning to false
-                }
-            }
+        boolean isWinning = false; 
+        if (this.findLongestChain() == 14 || this.findLongestChain() > 14) {
+            isWinning = true;
         }
-
-        // Check if the player has exactly 14 consecutive tiles
-        if (consecutiveCount != 14 || this.numberOfTiles != 14) {
-            isWinning = false;
-        }
-
         return isWinning;
     }
     
