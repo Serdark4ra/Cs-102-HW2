@@ -60,8 +60,7 @@ public class Player {
                     longestOne = lengthOfChain;
                 }
             }
-            else if(this.playerTiles[i + 1].getValue() == (this.playerTiles[i]).getValue())
-            {
+            else if(this.playerTiles[i + 1].getValue() == (this.playerTiles[i]).getValue()){
             }
             else{
                 lengthOfChain = 1;
@@ -82,23 +81,19 @@ public class Player {
             currentChain.add(playerTiles[0].getValue());
         }
     
-        for (int index = 1; index < this.numberOfTiles; index++) {
-            if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
-                if (!currentChain.contains(playerTiles[index - 1].getValue())) {
-                    currentChain.add(playerTiles[index - 1].getValue());
-                }
-                currentChain.add(playerTiles[index].getValue());
-            } else {
-
+        for (int index = 0; index < this.numberOfTiles - 1; index++) {
+            if (playerTiles[index + 1].getValue() - (this.playerTiles[index]).getValue() == 1 ) {
+                currentChain.add(playerTiles[index + 1].getValue());
                 if (currentChain.size() > longestChain.size()) {
                     longestChain = new ArrayList<>(currentChain);
                 }
-                currentChain.clear(); 
-                currentChain.add(playerTiles[index].getValue()); 
-            }
-        }
-    
+            }else if (playerTiles[index + 1].getValue() == (this.playerTiles[index]).getValue()) {
 
+            }else{
+                currentChain.clear();
+                currentChain.add(playerTiles[index + 1].getValue());
+            } 
+        }
         if (currentChain.size() > longestChain.size()) {
             longestChain = new ArrayList<>(currentChain);
         }
