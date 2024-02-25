@@ -18,6 +18,7 @@ public class Player {
      * @return true if the player wins, otherwise false.
      */
     public boolean checkWinning() {
+        
         boolean isWinning = true; // Assume winning unless proven otherwise
         int consecutiveCount = 1; // Initialize consecutive count to 1
         int disturbance = 0;
