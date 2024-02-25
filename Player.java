@@ -43,6 +43,7 @@ public class Player {
                 }
             }
             else if(this.playerTiles[i + 1].getValue() == (this.playerTiles[i]).getValue()){
+                // if tiles are equal do not disturb the existing chain
             }
             else{
                 lengthOfChain = 1;
@@ -86,7 +87,6 @@ public class Player {
     
 
     /**
-     * beyler tüm metodlara su java doc yorumlarını ekleyelim bi ara.
      * @param index
      * @return
      */
