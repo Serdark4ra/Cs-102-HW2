@@ -431,7 +431,7 @@ public class SimplifiedOkeyGame {
         }
     }
 
-    public void ortadakiKartlariGöster()
+    public void showStack()
     {
         for (int i = 0; i < tileCount; i++)
         {
