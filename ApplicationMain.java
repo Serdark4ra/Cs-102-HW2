@@ -179,9 +179,6 @@ public class ApplicationMain {
                             System.out.print(" -> " + game.getPlayers()[i].findLongestChain());
                             System.out.println();
                         }
-                        for (Player player : game.getPlayers()) {
-                            System.out.println(player.getName() + player.findLongestChain());
-                        }
                         Player[] winners = game.getPlayerWithHighestLongestChain();
                         if (winners.length == 1 ) {
                             System.out.print("Winner is : ");
