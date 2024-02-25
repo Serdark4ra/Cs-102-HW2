@@ -75,38 +75,35 @@ public class Player {
         }
     }
     public ArrayList<Integer> getLongestChain(){
-        
         ArrayList<Integer> longestChain = new ArrayList<>();
         ArrayList<Integer> currentChain = new ArrayList<>();
-        
-
+    
+        // İlk elemanı mevcut zincire ekleyin
+        if (this.numberOfTiles > 0) {
+            currentChain.add(playerTiles[0].getValue());
+        }
+    
         for (int index = 1; index < this.numberOfTiles; index++) {
-            
             if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
-                currentChain.add((playerTiles[index - 1].getValue()));
-            }
-            else
-            {   
-                if (index >= 2 && playerTiles[index - 2].canFormChainWith(playerTiles[index-1])) {
-                    currentChain.add((playerTiles[index - 1].getValue()));
+                currentChain.add(playerTiles[index].getValue());
+            } else {
+
+                if (currentChain.size() > longestChain.size()) {
+                    longestChain = new ArrayList<>(currentChain); 
                 }
-                if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
-                    if (currentChain.size() > longestChain.size()) {
-                        longestChain = new ArrayList<>(currentChain); // Update the longest chain's length
-                    }
-                    currentChain = new ArrayList<>();
-                }
+                currentChain = new ArrayList<>();
+                currentChain.add(playerTiles[index].getValue()); 
             }
         }
     
-        // Check the last tile separately
+
         if (currentChain.size() > longestChain.size()) {
             longestChain = new ArrayList<>(currentChain);
         }
     
         return longestChain;
-
     }
+    
 
     /**
      * beyler tüm metodlara su java doc yorumlarını ekleyelim bi ara.
