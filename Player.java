@@ -50,35 +50,52 @@ public class Player {
      */
     public int findLongestChain() {
         int longestChain = 0;
-        int lengthOfChain = 1;
+        int lenghtOfChain = 1;
     
+        // until the second last tile
         for (int index = 1; index < this.numberOfTiles; index++) {
-            if (playerTiles[index].canFormChainWith(playerTiles[index - 1])) {
-                lengthOfChain++;
-            } else {
-                longestChain = Math.max(longestChain, lengthOfChain);
-                lengthOfChain = 1; 
+            
+            if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
+                lenghtOfChain++;
+            }else{
+                if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
+                    if (lenghtOfChain > longestChain) {
+                        longestChain = lenghtOfChain; // Update the longest chain's length
+                    }
+                    lenghtOfChain = 1;
+                }
             }
         }
-        longestChain = Math.max(longestChain, lengthOfChain);
+    
+        // Check the last tile separately
+        if (lenghtOfChain > longestChain) {
+            longestChain = lenghtOfChain;
+        }
     
         return longestChain;
-    }
     
+    }
     public void displayLongestChain(){
         for (int i = 0; i < getLongestChain().size(); i++) {
             System.out.print(getLongestChain().get(i) + " ");
         }
     }
     public ArrayList<Integer> getLongestChain(){
+        
         ArrayList<Integer> longestChain = new ArrayList<>();
         ArrayList<Integer> currentChain = new ArrayList<>();
+        
 
         for (int index = 1; index < this.numberOfTiles; index++) {
             
             if (playerTiles[index - 1].canFormChainWith(playerTiles[index])) {
                 currentChain.add((playerTiles[index - 1].getValue()));
-            }else{
+            }
+            else
+            {   
+                if (index >= 2 && playerTiles[index - 2].canFormChainWith(playerTiles[index-1])) {
+                    currentChain.add((playerTiles[index - 1].getValue()));
+                }
                 if (playerTiles[index].getValue() != playerTiles[index - 1].getValue()) {
                     if (currentChain.size() > longestChain.size()) {
                         longestChain = new ArrayList<>(currentChain); // Update the longest chain's length
@@ -86,11 +103,7 @@ public class Player {
                     currentChain = new ArrayList<>();
                 }
             }
-            if (index == this.numberOfTiles - 1 && playerTiles[index - 1].getValue() + 1 == playerTiles[index].getValue() ) {
-                currentChain.add(playerTiles[index].getValue());
-            }
         }
-        
     
         // Check the last tile separately
         if (currentChain.size() > longestChain.size()) {
