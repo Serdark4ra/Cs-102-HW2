@@ -120,8 +120,9 @@ public class ApplicationMain {
                         System.out.println("Congratulations, you win!");    
                     }
                     else{
-
-                        System.out.println("The game is over as there's no more tiles left in the stack");
+                        if(!game.hasMoreTileInStack()){
+                            System.out.println("The game is over as there's no more tiles left in the stack");
+                        }
                         for (int i = 0; i < game.getPlayers().length; i++){
                             System.out.print(game.getPlayers()[i].getName() + "'s longest chain is: ");
                             game.getPlayers()[i].displayLongestChain();
@@ -179,7 +180,10 @@ public class ApplicationMain {
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
-                        System.out.println("The game is over as there's no more tiles left in the stack");
+
+                        if(!game.hasMoreTileInStack()){
+                            System.out.println("The game is over as there's no more tiles left in the stack");
+                        }
                         for (int i = 0; i < game.getPlayers().length; i++){
                             System.out.print(game.getPlayers()[i].getName() + "'s longest chain is: ");
                             game.getPlayers()[i].displayLongestChain();
