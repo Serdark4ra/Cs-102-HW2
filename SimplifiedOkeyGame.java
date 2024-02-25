@@ -42,11 +42,11 @@ public class SimplifiedOkeyGame {
         {            
             if (i == 0) 
             {
-                tileNum = 15;
+                tileNum = 15; //first player gets 15 tiles
             } 
             else 
             {
-                tileNum = 14;
+                tileNum = 14; //others get 14
             }
            
             for (int j = 0; j < tileNum; j++)

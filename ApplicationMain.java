@@ -83,7 +83,7 @@ public class ApplicationMain {
                     firstTurn = false;
                 }
 
-                gameContinues = !game.didGameFinish() && game.hasMoreTileInStack();
+                gameContinues = !game.didGameFinish() && game.hasMoreTileInStack();                
 
                 if(gameContinues) {
                     // if game continues we need to discard a tile using the given index by the player
@@ -177,6 +177,7 @@ public class ApplicationMain {
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
                         // Serdar Kara
+                        System.out.println("The game is over as there's no more tiles left in the stack");
                         for (int i = 0; i < game.getPlayers().length; i++){
                             System.out.print(game.getPlayers()[i].getName() + "'s longest chain is: ");
                             game.getPlayers()[i].displayLongestChain();
